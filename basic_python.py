@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Переменная
 name = "Anna"
 age = 25
@@ -69,6 +71,7 @@ user["city"] = "Moscow"
 print(user)
 
 # Генераторы списков( List Comprehension)
+
 # создаем список квадратов чисел от 1 до 5
 squares = [x ** 2 for x in range(1, 6)]
 print(squares)
@@ -117,3 +120,75 @@ print(divisible_by_7_and_11_or_not_3)
 number = list(range(1, 1001))
 divisible_by_5_and_9_or_not_3_and_6 = [x for x in numbers if (x % 5 == 0 or x % 9 == 0) and not (x % 4 == 0 and x % 6 == 0)]
 print(divisible_by_5_and_9_or_not_3_and_6)
+
+# фильтруем числа, которые делятся на 7 или 13, но НЕ делятся ни на 5, ни на 11
+number = list(range(1, 1001))
+divisible_by_7_or_13_not_5_and_11 = [x for x in numbers if(x % 7 == 0 or x % 13 ==0) and not (x % 5 == 0 or x % 11 == 0)]
+print(divisible_by_7_or_13_not_5_and_11)
+
+# фильтруем числа, которые делятся на 4 ИЛИ 7, но НЕ делится на 5
+numbers = list(range(1, 101))
+divisible_4_or_7_not_5 = [x for x in numbers if (x % 4 == 0 or x % 7 == 0) and x % 5 != 0]
+print(divisible_4_or_7_not_5)
+
+# фильтруем строки по длине и наличию символов
+words = ["привет", "дом", "здравствуй", "кот", "арбуз", "погода", "лес123", "ананас", "солнце"]
+filtered_words = [word for word in words if len(word) > 5 and "а" in word and not any(char.isdigit() for char in word)]
+print(filtered_words)
+
+# фильтруем слова, которые начинаются на "с" или "п", оканчиваются на "а", не содержат букву "е"
+words = ["собака", "природа", "погода", "работа", "семья", "персона", "панда"]
+
+filtered_words_position = [
+    word for word in words 
+    if word.startswith(("с", "п")) and word.endswith("а") and "е" not in word
+]
+print(filtered_words_position)
+
+# фильтруем слова, которые содержат "и", не содержат "а" и длина слова больше 5 символов
+words = ["машина", "лист", "письмо", "игра", "коробка", "мечта", "виноград", "компьютер"]
+filtered_words = [
+    word for word in words 
+    if "и" in word and len(word) > 5 and  "а" not in word
+]
+print(filtered_words)
+
+# фильтруем слова, которые начинаются на "м" или "г", содержат "о", НЕ заканчивается на "а", длина больше 4
+words = ["город", "мост", "гора", "молоко", "гриб", "погода", "мечта", "гром", "монитор"]
+filtered_words = [
+    word for word in words
+    if word.startswith(("м", "г")) and "о" in word and not word.endswith("а") and len(word) > 4
+]
+print(filtered_words)
+
+# фильтруем слова,которые НЕ содержат "р", начинаются на "п" или "в", заканчиваются на "а" или "о", длина не больше 7 символов
+words = ["погода", "работа", "ваза", "ветер", "пламя", "вино", "поле", "волна"]
+filtered_words = [
+    word for word in words
+    if not "р" in word 
+    and word.startswith(("п", "в")) 
+    and word.endswith(("а","о")) 
+    and len(word) < 7
+]
+print(filtered_words)
+
+# фильтруем слова, котрые содержат "с" или "д", НЕ содержат "я", длина от 5до 8 символов включительно
+words = ["сосна", "дуб", "машина", "солнце", "груша", "дорога", "песок", "осень"]
+filtered_words = [
+    word for word in words
+    if ("с" in word or "д" in word)
+    and not word.endswith("я") 
+    and  5 <= len(word) <= 8
+]
+print(filtered_words)
+
+# фильтруем слова, котопые содержат либо "м", либо "г", НЕ содержит "е", заканчивается на "а" или "о", дина от 6 до 9 включительно
+words = ["молоко", "гора", "мяч", "магнолия", "морковь", "гранат", "груша", "глобус"]
+filtered_words = [
+    word for word in words
+    if ("м" in word or "г" in word)
+    and not "е" in word
+    and word.endswith(("а", "о"))
+    and  6 <= len(word) <= 9
+]
+print(filtered_words)
