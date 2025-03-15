@@ -54,3 +54,27 @@ def filter_by_first_letter(words, letter):
 # сумма квадратов чисел
 def sum_of_squares(numbers):
     return sum(x ** 2 for x in numbers) 
+
+# проверка палиндрома
+def is_palindrome(word):
+    word = word.lower().replace(" ", "") # делаем буквы маленькими, удаляем пробелы между ними
+    return word == word[::-1] # сравниваем слово с его перевернутой версией
+
+# подсчет количества гласных в строке
+def count_vowels(text):
+    text = text.lower() # переводим текст в нижний регистр
+    vowels = "аеёиоуыэюя"
+    return sum(1 for letter in text if letter in vowels) # подсчитываем количество гласных
+
+# ищем среднее арифметическое
+def average(numbers):
+    return sum(numbers) / len(numbers) if numbers else 0
+
+# ищем самое короткое слово
+def shortest_word(words):
+    return min(words, key=len)
+
+# ищем слово с длиной ближе к среднему значению
+def closest_to_average(words):
+    avg_length = sum(len(word) for word in words) / len(words)
+    return min(words, key=lambda word: abs(len(word) - avg_length))

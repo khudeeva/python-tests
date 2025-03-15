@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -76,3 +76,29 @@ print(filter_by_first_letter(words, "а"))
 # вычисляем сумму квадратов числа:
 numbers = [1, 2, 3, 4]
 print(sum_of_squares(numbers))
+
+# проверка палиндрома
+print(is_palindrome("топот"))
+print(is_palindrome("шорох"))
+print(is_palindrome("радар"))
+print(is_palindrome("А роза упала на лапу Азора"))
+
+# подсчет количества гласных
+print(count_vowels("привет"))
+print(count_vowels("обучение"))
+print(count_vowels("ТеТрАдь"))
+print(count_vowels("самообразование"))
+ 
+ # ищем среднее арифметическое
+print(average([1, 2, 3, 4, 5]))  # 3.0
+print(average([10, 20, 30]))  # 20.0
+print(average([7, 14, 21, 28]))  # 17.5
+print(average([])) # 0
+
+# ищем самое короткое слово
+words = ["машина", "телевизор", "кот", "иммунитет"]
+print(shortest_word(words))
+
+# ищем слово с длиной ближе к среднему значению
+words = ["машина", "телефон", "кот","планета","дом"]
+print(closest_to_average(words))
