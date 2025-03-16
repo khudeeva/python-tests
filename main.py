@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -102,3 +102,16 @@ print(shortest_word(words))
 # ищем слово с длиной ближе к среднему значению
 words = ["машина", "телефон", "кот","планета","дом"]
 print(closest_to_average(words))
+
+# удвоение числа
+print(double(10))
+print(double(7))
+
+# параметр по умолчанию
+print(power(3))
+print(power(2, 5))
+
+# суммируем все числа с *args
+print(sum_all(1, 2, 3, 4, 5))
+print(sum_all(10, 20, 30))
+
