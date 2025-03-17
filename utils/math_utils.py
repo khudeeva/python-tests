@@ -1,4 +1,5 @@
 from math import prod
+import math
 
 def multiply (a, b):
     return a * b
@@ -125,3 +126,60 @@ def calculate_stats(*numbers):
 
 calculate_stats(10, 20, 30, 40, 50)
 
+# находим медиану - центральное число в отсортированном списке
+def find_median(*numbers):
+    numbers = sorted(numbers) # сортируем список
+    n = len(numbers) # считаем количество чисел
+    middle = n // 2 # находим индекс середины
+    if n % 2 == 1: # если нечетное число - возвращаем средний элемент
+        return numbers[middle]
+    else: # если четное - берем среднее 2х центральных чисел
+        return(numbers[middle -1] + numbers[middle]) / 2
+
+
+print(find_median(10, 20, 30, 40, 50))
+print(find_median(1, 3, 5, 7))
+print(find_median(2, 8, 10, 12, 14))
+print(find_median(4, 6, 8, 10))
+
+# ищем сумму всех четных чисел
+def sum_even_all(numbers):
+    return sum(x for x in numbers if x % 2 == 0)
+
+# ищем произведение всех нечетных чисел:
+def multiply_odd_all(numbers):
+    return prod(x for x in numbers if x % 2 == 1)
+
+# ищем максимальную разницу между числами
+def max_difference(numbers):
+    maximum = max(numbers)
+    minimum = min(numbers)
+    return max(numbers) - min(numbers)
+
+# ищем среднее арифметическое
+def average_arifmetic(numbers):
+    return sum(numbers) / len(numbers)
+
+# ищем среднеквадратичное отклонение чисел
+def average_square(numbers):
+    average = sum(numbers) / len(numbers) # ищем среднее арифметическое
+    squared_differences = [(x - average) ** 2 for x in numbers] #квадрат разницы каждого числа
+    variance = sum(squared_differences) / len(numbers) # среднее этих квадратов
+    return math.sqrt(variance) # извлекаем корень 
+
+# фильтрация строк по количеству гласных
+def filter_by_vowels_count(words, min_vowels):
+    vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
+    return [word for word in words if sum(1 for letter in word if letter in vowels) >=min_vowels]
+
+# удаление дубликатов в списке
+def remove_duplicates(lst):
+    unique_items = []
+    for item in lst:
+        if item not in unique_items:
+            unique_items.append(item)
+    return unique_items
+
+# удаление из списка элементов, которые встречаются больше 1 раза
+def remove_repeated(lst):
+    return [ item for item in lst if lst.count(item) == 1]

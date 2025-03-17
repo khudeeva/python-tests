@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated# Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -115,3 +115,34 @@ print(power(2, 5))
 print(sum_all(1, 2, 3, 4, 5))
 print(sum_all(10, 20, 30))
 
+# ищем сумму всех четных чисел
+numbers = [3, 10, 7, 4, 12, 5, 8, 21, 6, 14]
+print(sum_even_all(numbers))
+
+# ищем произведение всех нечетных чисел
+numbers = [2, 3, 5, 7, 8, 10, 11, 13, 15]
+print(multiply_odd_all(numbers))
+
+# ищем максимальную разницу между числами
+numbers = [20, 5, 15, 30, 50, 10]
+print(max_difference(numbers))
+
+# ищем среднее арифметическое 
+numbers = [10, 15, 20, 25, 30, 35]
+print(average_arifmetic(numbers))
+
+# ищем среднее квадратичное отклонение 
+numbers = [10, 20, 30, 40, 50]
+print(average_square(numbers))
+
+# фильтруем строки по количеству гласных
+words = ["погода", "кот", "машина", "окно", "стол"]
+print(filter_by_vowels_count(words, 2))
+
+# удаляем дубликаты в списке
+numbers = [1, 2, 3, 2, 4, 1, 5]
+print(remove_duplicates(numbers)) 
+
+# удаляем из списка элементы, которые встречаются больше 1 раза
+numbers = [1, 2, 3, 2, 4, 1, 5]
+print(remove_repeated(numbers))
