@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated# Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words# Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -146,3 +146,7 @@ print(remove_duplicates(numbers))
 # удаляем из списка элементы, которые встречаются больше 1 раза
 numbers = [1, 2, 3, 2, 4, 1, 5]
 print(remove_repeated(numbers))
+
+# фильтрация строк, содержащихся гласные буквы
+words = ["дом", "крт", "мост", "стул", "яблоко"]
+print(filter_vowel_words(words))

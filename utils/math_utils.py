@@ -183,3 +183,8 @@ def remove_duplicates(lst):
 # удаление из списка элементов, которые встречаются больше 1 раза
 def remove_repeated(lst):
     return [ item for item in lst if lst.count(item) == 1]
+
+# фильтрация строк, содержащихся гласные буквы
+def filter_vowel_words(words):
+    vowels = "аеёиоуыэюя"
+    return [word for word in words if any( letter in vowels for letter in word)] 
