@@ -188,3 +188,80 @@ def remove_repeated(lst):
 def filter_vowel_words(words):
     vowels = "аеёиоуыэюя"
     return [word for word in words if any( letter in vowels for letter in word)] 
+
+# фильтрация слов, которые начинаются и заканчиваются на согласную букву
+def filter_consonant_words(words):
+    vowels = "аеёиоуыэюя"
+    return [word for word in words if word[0] not in vowels and word[-1] not in vowels]
+
+   # фильтруем слова, кторые содержат  больше/= 2 гласных 
+def filter_two_vowels(words):
+    vowels = "аеёиоуыэюя"
+    return [word for word in words if sum(1 for letter in word if letter in vowels) >= 2]
+
+# фильтруем слова, которые содержат четное количество букв в слове
+def filter_even_length(words):
+    return [word for word in words if len(word) % 2 == 0]
+
+# фильтрация слов, где первая и последняя буквы одинаковые
+def filter_same_first_last(words):
+    return [word for word in words if  word[0] == word[-1]]
+
+# фильтрация слов, которые содержат только уникальные буквы
+def filter_unique_letters(words):
+    return[word for word in words if len(set(word)) == len(word)]
+
+# фильтрация слов с повторяющимися буквами
+def filter_repeated_letters(words):
+    return[word for word in words if len(set(word)) < len(word)]
+
+# фильтрация чисел по сумме цифр
+def filter_by_digits_sum(numbers, min_sum):
+    return [num for num in numbers if sum(int(digit) for digit in str(num)) > min_sum]
+
+
+# фильтрация слов по количеству уникальных букв
+def filter_by_unique_letters(words, max_unique):
+    return[word for word in words if len(set(word)) <= max_unique]
+
+# функция для суммы цифр числа
+def sum_of_digits(num):
+    return  sum(int(digit) for digit in str(num))
+
+# подсчет количества слов в строке
+def count_words(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return len(words)
+
+# ищем самое длинное слово в строке
+def longest_word(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return max(words, key=len)
+
+# проверка на палиндром
+def is_palindrome(word):
+    if not isinstance(word, str):
+        return "Ошибка: не строка"
+    clean_word = word.lower().replace(" ", "")
+    return clean_word == clean_word[::-1]
+
+# ищем самое короткое слово в тексте
+def shortest_word(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return min(words, key=len)
+
+# ищем слово с максимальным количеством гласных
+def most_vowels_word(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    
+    vowels = "аеёиоуыэюя"
+    words = text.split()
+
+    return max(words, key=lambda word: sum(1 for letter in word if letter in vowels))

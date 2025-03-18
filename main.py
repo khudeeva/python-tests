@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words# Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -150,3 +150,65 @@ print(remove_repeated(numbers))
 # фильтрация строк, содержащихся гласные буквы
 words = ["дом", "крт", "мост", "стул", "яблоко"]
 print(filter_vowel_words(words))
+
+# фильтрация слов, которые начинаются и заканчиваются на согласную букву
+words = ["мост", "река", "груша", "стол", "лист"]
+print(filter_consonant_words(words)) 
+
+# фильтруем слова, которые содержат больше/= 2 гласных в слове
+words = ["мост", "река", "груша", "стол", "лист", "океан"]
+print(filter_two_vowels(words))
+
+# фильтруем слова, еоторые содержат четное количество букв в слове
+words = ["кот", "стол", "мост", "дверь", "окно"]
+print(filter_even_length(words))
+
+# фильтрация слов, где первая и последняя буквы одинаковые
+words = ["мама", "кокос", "стол", "ананас", "река", "топот"]
+print(filter_same_first_last(words))
+
+# фильтрация слов, которые содержат только уникальные буквы
+words = ["кот", "мама", "лист", "сосна", "дом"]
+print(filter_unique_letters(words))
+
+# фильтрация слов с повторяющимися буквами
+words = ["кот", "мама", "лист", "сосна", "дом", "река", "шар"]
+print(filter_repeated_letters(words)) 
+
+# фильтрация чисел по сумме цифр
+numbers = [10, 23, 34, 47, 58, 99]
+print(filter_by_digits_sum(numbers, 10))
+
+# фильтрация слов по количеству уникальных букв
+words = ["папа", "ананас", "книга", "дом", "программист"]
+print(filter_by_unique_letters(words, 5))
+
+# функция для суммы цифр числа
+print(sum_of_digits(123))  
+print(sum_of_digits(789))
+
+# подсчет количества слов в строке
+print(count_words("Привет, как дела?"))  # 3
+print(count_words("Python лучший язык"))  # 3
+print(count_words("Один"))  # 1
+
+# ищем самое длинное слово в строке
+print(longest_word("Солнце светит ярко"))  # "Солнце"
+print(longest_word("Я изучаю программирование"))  # "программирование"
+
+# проерка на палиндроме
+print(is_palindrome("топот"))  # True
+print(is_palindrome("казак"))  # True
+print(is_palindrome("дом"))  # False
+
+# ищем самое короткое слово в тексте
+print(shortest_word("Я люблю программирование"))  # "Я"
+print(shortest_word("Python лучший язык"))  # "язык"
+print(shortest_word(12345))  # "Ошибка: не строка"
+
+# ищем слово с максимальным количеством гласных
+print(most_vowels_word("Алиса любит математику"))  # "математику"
+print(most_vowels_word("Программирование это искусство"))  # "Программирование"
+print(most_vowels_word(12345))  # "Ошибка: не строка"
+
+
