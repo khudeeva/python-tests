@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -211,4 +211,22 @@ print(most_vowels_word("Алиса любит математику"))  # "мат
 print(most_vowels_word("Программирование это искусство"))  # "Программирование"
 print(most_vowels_word(12345))  # "Ошибка: не строка"
 
+# замена букв в тексте
+print(replace_letters("Привет, мир!", "и", "ы"))  # "Прывыт, мыр!"
+print(replace_letters("hello world", "o", "0"))   # "hell0 w0rld"
 
+# считаем количество букв в каждом слове
+print(word_lengths("Привет мир"))  # [6, 3]
+print(word_lengths("Это тестовая строка"))  # [3, 9, 6]
+
+# выбираем самое частое слово в тексте
+print(most_frequent_word("кот собака кот кот собака дом")) # "кот"
+
+# ищем самое редкое слово в тексте
+print(least_frequent_word("ягода малина ягода  ягода")) # малина
+
+# считаем количество предложений в тексте
+print(count_sentences("Я изучаю программирование? Да, верно! Это очень сложно, но нужно."))
+
+# замена всех цифр в тексте на *
+print(replace_digits("Привет, 98! Мой номер 123-456."))  # Ожидаем: "Привет, **! Мой номер ***-***."

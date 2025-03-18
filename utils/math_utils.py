@@ -1,5 +1,6 @@
 from math import prod
 import math
+import re
 
 def multiply (a, b):
     return a * b
@@ -265,3 +266,44 @@ def most_vowels_word(text):
     words = text.split()
 
     return max(words, key=lambda word: sum(1 for letter in word if letter in vowels))
+
+# замена букв в тексте
+def replace_letters(text, old, new):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    return text.replace(old, new)
+
+# считаем количество букв  в каждом слове
+def word_lengths(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return [len(word) for word in words] 
+
+# выбираем самое частое слово в тексте
+def most_frequent_word(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return max(words, key=words.count)
+
+# ищем самое редкое слово в тексте
+def least_frequent_word(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return min(words, key=words.count)
+
+# считаем количество предложений в тексте
+def count_sentences(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    sentences = re.split(r'[.!?]', text)
+    sentences = [s.strip() for s in sentences if s.strip()]
+    return len(sentences)
+
+# замена всех цифр в тексте на *
+def replace_digits(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    return re.sub(r'\d','*', text)
