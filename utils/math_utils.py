@@ -307,3 +307,57 @@ def replace_digits(text):
     if not isinstance(text, str):
         return "Ошибка: не строка"
     return re.sub(r'\d','*', text)
+
+# делим текст по ,.!
+def divided_sentences(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    sentences = re.split(r'[,.!]', text) # разделяем текст по знакам препинания
+    sentences = [s.strip() for s in sentences if s.strip()] # убираем пустые строки
+    return(sentences)
+
+# замена всех букв "а" и "о" на * в тексте
+def replace_words(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    return re.sub(r'[ао]', '*', text) # несколько букв заключи в []
+
+# извлекаем из строки только числа
+def extract_numbers(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    return re.findall(r'\d+', text) # находим все группы цифр
+
+# оставляем в тексте слова длиной от 4 до 6 символов
+def filtered_words_len(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    words = text.split()
+    return [word for word in words if 4 <= len(word) <= 6]
+
+# ищем слова с длиной от 4 до 6 букв
+def find_words(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    return re.findall(r'\b\w{4,6}\b', text)
+
+# ищем все даты в формате ДД.ММ.ГГГГ
+def find_dates(text):
+    if not isinstance(text, str):
+        return "Ошибка: не строка"
+    return re.findall(r'\b\d{2}\.\d{2}\.\d{4}\b', text)
+
+# проверяем как функция возвращает кортеж
+def get_user_info(name, age, city):
+    return(name, age, city)
+
+# фильтруем уникальные числа из списка
+def filter_unique(numbers):
+    return list(set(numbers))
+
+# добавляем ключ в словарь
+def update_dict(user_data):
+    if not isinstance(user_data, dict):
+        return "Ошибка: не словарь"
+    user_data["status"] = "active"
+    return user_data

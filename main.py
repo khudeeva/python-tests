@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -230,3 +230,28 @@ print(count_sentences("Я изучаю программирование? Да, �
 
 # замена всех цифр в тексте на *
 print(replace_digits("Привет, 98! Мой номер 123-456."))  # Ожидаем: "Привет, **! Мой номер ***-***."
+
+# делим текст по ,.!
+print(divided_sentences("Привет, как дела! Всё хорошо. Увидимся позже!"))
+
+# замена всех букв "а" и "о" на * в тексте
+print(replace_words("Моя кошка обожает апельсины"))
+
+# извлекаем из строки только числа
+print(extract_numbers("Мой номер 456-789, а твой 123-456?"))
+
+# ищем слова с длиной от 4 до 6 букв
+print(find_words("апельсин, яблоко, якорь, машина"))
+
+# ищем все даты в формате ДД.ММ.ГГГГ
+text = "Сегодня 12.03.2024, а завтра 13.03.2024. А ещё 01.01.2025."
+print(find_dates(text))  # ['12.03.2024', '13.03.2024', '01.01.2025']
+
+# проверяем, как функция возвращает кортеж
+print(get_user_info("Анна", 25, "Москва"))
+
+# фильтруем уникальные числа из списка
+print(filter_unique([1, 2, 2, 3, 4, 4, 5]))
+
+# добавляем ключи в словарь
+print(update_dict({"name": "Иван", "age": 30}))
