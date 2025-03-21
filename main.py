@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -255,3 +255,58 @@ print(filter_unique([1, 2, 2, 3, 4, 4, 5]))
 
 # добавляем ключи в словарь
 print(update_dict({"name": "Иван", "age": 30}))
+
+# проверяем поиск только уникальных слов
+print(find_unique_words("Я люблю Python. Python - это круто!"))
+
+# проверяем множество уникальных значений 
+print(unique_numbers([1, 2, 2, 3, 4, 4, 5]))
+
+# ищем количество уникальных чисел в списке
+print(count_unique([1, 2, 2, 3, 4, 4, 5]))
+
+# ищем только те числа, которые есть одновременно в двух списках
+list1 = [1, 2, 3, 4, 5]
+list2 = [4, 5, 6, 7]
+print(common_numbers(list1, list2))
+
+# ищем элементы из первого списка, которых нет во втором 
+list1 = [1, 2, 3, 4, 5]
+list2 = [3, 4, 5, 6, 7]
+print(unique_from_first(list1, list2))
+
+# ищем числа которе есть ТОЛЬКО в одном из двух списков
+list1 = [1, 2, 3, 4]
+list2 = [3, 4, 5, 6]
+print(unique_numbers_from_both(list1, list2))
+
+# ищем пересечение, если в списках есть хотя бы 1 общий элемент
+list1 = [10, 20, 30]
+list2 = [40, 50, 30]
+print(has_common_elements(list1, list2))
+
+# ищем подмножество
+list1 = [1, 2]
+list2 = [1, 2, 3, 4]
+print(is_subset(list1, list2))
+
+# проверяем не имеют ли два списка общие элементы
+print(is_disjoint([1, 2, 3], [4, 5, 6]))  #True  
+print(is_disjoint([1, 2, 3], [3, 4, 5]))  #False
+
+# проверка на дубликаты
+print(has_duplicates([1, 2, 3, 4, 5]))      # False — всё уникально
+print(has_duplicates([1, 2, 2, 3, 4, 5]))   # True — есть повтор
+
+# считаем количество уникальных посещенных страниц
+visited_pages = ["/home", "/about", "/home", "/products", "/contact", "/products", "/home"]
+print(count_unique_pages(visited_pages))
+
+# ищем уникальные имена, отсортированные по алфавит
+users = ["Аня", "Борис", "Аня", "Глеб", "Борис", "Ева"]
+print(unique_users(users))
+
+# ищем кто не сдал работу, отсортируем по алфавиту
+all_students = ["Аня", "Борис", "Глеб", "Ева", "Дима"]
+submitted = ["Глеб", "Аня", "Ева"]
+print(who_didnt_submit(all_students, submitted))
