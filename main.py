@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit, unique_email, common_products, unique_words, who_skipped, get_user_names, keys_list, name_id_pairs, names_id, get_active_users, get_inactive_users, find_admins, find_role_active, format_user_roles, count_roles, find_users, find_orders, find_pets, find_class, find_only_class, find_repeated_names, find_repeated_roles, find_unique_roles, find_users_with_unique_roles, find_unique_vegan_dishes # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -310,3 +310,204 @@ print(unique_users(users))
 all_students = ["Аня", "Борис", "Глеб", "Ева", "Дима"]
 submitted = ["Глеб", "Аня", "Ева"]
 print(who_didnt_submit(all_students, submitted))
+
+#проверяем уникальность email
+emails = ["a@test.com", "b@test.com", "a@test.com", "c@test.com"]
+print(unique_email(emails))
+
+# ищем общие товары в корзине
+cart1 = ["молоко", "хлеб", "сыр", "сок"]
+cart2 = ["чай", "хлеб", "сыр", "вода"]
+print(common_products(cart1, cart2))
+
+# ищем уникальные слова в тексте (отсортированы и в нижнем регистре)
+text = "Hello world hello Python python code"
+print(unique_words(text))
+
+# ищем кто пропустил лекцию(отсортированы по алфавиту)
+group = ["Аня", "Борис", "Вика", "Глеб", "Данил"]
+present = ["Вика", "Глеб", "Аня"]
+print(who_skipped(group, present))
+
+# получаем имена пользователей из словаря(+сортируем по алфавиту)
+users = {
+    101: "Аня",
+    102: "Борис",
+    103: "Глеб",
+    104: "Ева"
+}
+
+print(get_user_names(users))
+# получаем список всех ключей(id)
+users = {
+    101: "Аня",
+    102: "Борис",
+    103: "Глеб",
+    104: "Ева"
+}
+print(keys_list(users))
+
+# получаем пары в виде "имя - id"
+users = {
+    101: "Аня",
+    102: "Борис",
+    103: "Глеб",
+    104: "Ева"
+}
+print(name_id_pairs(users))
+
+users = {
+    101: "Аня",
+    102: "Борис",
+    103: "Глеб",
+    104: "Ева"
+}
+print(names_id(users))
+
+# ищем пользователей, у которых активность = True
+users = {
+    "Аня": True,
+    "Борис": False,
+    "Глеб": True,
+    "Ева": False,
+    "Данил": True
+}
+print(get_active_users(users))
+
+# ищем неактивных пользователей == False
+users = {
+    "Аня": True,
+    "Борис": False,
+    "Глеб": True,
+    "Ева": False,
+    "Данил": True
+}
+print(get_inactive_users(users))
+
+# ищем пользователей по роли
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True}
+}
+print(find_admins(users))
+
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True}
+}
+
+print(find_role_active(users))
+
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True}
+}
+print(format_user_roles(users))
+
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True}
+}
+print(count_roles(users))
+
+
+# Ищем пользователей с определенной ролью и активностью
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True}
+}
+print(find_users(users, role="user", only_active=True))   # ['Данил']
+print(find_users(users, role="user", only_active=False))  # ['Борис', 'Данил', 'Ева']
+print(find_users(users, role="admin", only_active=True))  # ['Аня', 'Глеб']
+
+# ищем пользователей с определенным заказом еды(+ vegan)
+orders = {
+    "Аня": {"dish": "пицца", "is_vegan": False},
+    "Борис": {"dish": "салат", "is_vegan": True},
+    "Глеб": {"dish": "бургер", "is_vegan": False},
+    "Ева": {"dish": "овощной боул", "is_vegan": True},
+}
+
+print(find_orders(orders, dish="салат", only_vegan=True)) # ['Борис']
+
+print(find_orders(orders, dish="пицца", only_vegan=False)) # ['Аня']
+
+# ищем псов и их имена
+pets = {
+    "Мурзик": {"type": "кот", "age": 2},
+    "Шарик": {"type": "пёс", "age": 5},
+    "Рекс": {"type": "пёс", "age": 3},
+}
+print(find_pets(pets))
+
+# Ищем учеников, которые учатся в обоих классах
+class_a = ["Аня", "Борис", "Глеб", "Ева"]
+class_b = ["Глеб", "Данил", "Ева", "Жанна"]
+print(find_class(class_a, class_b))
+
+# Ищем учеников, которые учатся ТОЛЬКО  в одном из 2х классов 
+class_a = ["Аня", "Борис", "Глеб", "Ева"]
+class_b = ["Глеб", "Данил", "Ева", "Жанна"]
+print(find_only_class(class_a, class_b))
+
+# ищем имена, которые встречаются в списке больше 1 раза
+names = ["Аня", "Борис", "Аня", "Глеб", "Ева", "Глеб", "Аня"]
+print(find_repeated_names(names))
+
+# ищем повторяющиеся роли пользователей
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True},
+    "Жанна": {"role": "manager", "active": True}
+}
+print(find_repeated_roles(users))
+
+# ищем роли, которые встречаются только 1 раз
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True},
+    "Жанна": {"role": "manager", "active": True}
+}
+print(find_unique_roles(users))
+
+# ищем пользователей с уникальной ролью
+users = {
+    "Аня": {"role": "admin", "active": True},
+    "Борис": {"role": "user", "active": False},
+    "Глеб": {"role": "admin", "active": True},
+    "Ева": {"role": "user", "active": False},
+    "Данил": {"role": "user", "active": True},
+    "Жанна": {"role": "manager", "active": True}
+}
+print(find_users_with_unique_roles(users))
+
+orders = {
+    "Аня": {"dish": "пицца", "vegan": False},
+    "Борис": {"dish": "салат", "vegan": True},
+    "Глеб": {"dish": "пицца", "vegan": False},
+    "Ева": {"dish": "салат", "vegan": True},
+    "Данил": {"dish": "овощной боул", "vegan": True},
+    "Жанна": {"dish": "тофу", "vegan": True}
+}
+print(find_unique_vegan_dishes(orders))
