@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit, unique_email, common_products, unique_words, who_skipped, get_user_names, keys_list, name_id_pairs, names_id, get_active_users, get_inactive_users, find_admins, find_role_active, format_user_roles, count_roles, find_users, find_orders, find_pets, find_class, find_only_class, find_repeated_names, find_repeated_roles, find_unique_roles, find_users_with_unique_roles, find_unique_vegan_dishes # Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit, unique_email, common_products, unique_words, who_skipped, get_user_names, keys_list, name_id_pairs, names_id, get_active_users, get_inactive_users, find_admins, find_role_active, format_user_roles, count_roles, find_users, find_orders, find_pets, find_class, find_only_class, find_repeated_names, find_repeated_roles, find_unique_roles, find_users_with_unique_roles, find_unique_vegan_dishes, find_all_keys, find_inactive_users, find_unique_role_today, remove_even, clean_names, find_duplicates, find_unique_names, find_longest_word, find_shortest_word, average_num, more_that_5, filter_long_words, remove_words_with_a, words_starting_with_m, same_first_last_letter, difficult_filtered_words, transform_m_words, capitalize_long_words, remove_even_length, word_lengths, filter_by_allowed_lengths, filter_by_lengths_and_start, is_even, is_long_word, vowels_start, is_big_and_divisible, is_title_and_multiple_words, is_alpha_only, total_sum, filter_strings# Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -329,32 +329,6 @@ group = ["Аня", "Борис", "Вика", "Глеб", "Данил"]
 present = ["Вика", "Глеб", "Аня"]
 print(who_skipped(group, present))
 
-# получаем имена пользователей из словаря(+сортируем по алфавиту)
-users = {
-    101: "Аня",
-    102: "Борис",
-    103: "Глеб",
-    104: "Ева"
-}
-
-print(get_user_names(users))
-# получаем список всех ключей(id)
-users = {
-    101: "Аня",
-    102: "Борис",
-    103: "Глеб",
-    104: "Ева"
-}
-print(keys_list(users))
-
-# получаем пары в виде "имя - id"
-users = {
-    101: "Аня",
-    102: "Борис",
-    103: "Глеб",
-    104: "Ева"
-}
-print(name_id_pairs(users))
 
 users = {
     101: "Аня",
@@ -362,9 +336,12 @@ users = {
     103: "Глеб",
     104: "Ева"
 }
-print(names_id(users))
+print(get_user_names(users))# получаем имена пользователей из словаря(+сортируем по алфавиту)
+print(keys_list(users))# получаем список всех ключей(id)
+print(name_id_pairs(users))# получаем пары в виде "имя - id"
+print(names_id(users)) # получаем строки "ID: имя", сортируем по имени
 
-# ищем пользователей, у которых активность = True
+
 users = {
     "Аня": True,
     "Борис": False,
@@ -372,27 +349,10 @@ users = {
     "Ева": False,
     "Данил": True
 }
-print(get_active_users(users))
+print(get_active_users(users))# ищем пользователей, у которых активность = True
+print(get_inactive_users(users))# ищем неактивных пользователей == False
 
-# ищем неактивных пользователей == False
-users = {
-    "Аня": True,
-    "Борис": False,
-    "Глеб": True,
-    "Ева": False,
-    "Данил": True
-}
-print(get_inactive_users(users))
 
-# ищем пользователей по роли
-users = {
-    "Аня": {"role": "admin", "active": True},
-    "Борис": {"role": "user", "active": False},
-    "Глеб": {"role": "admin", "active": True},
-    "Ева": {"role": "user", "active": False},
-    "Данил": {"role": "user", "active": True}
-}
-print(find_admins(users))
 
 users = {
     "Аня": {"role": "admin", "active": True},
@@ -401,39 +361,14 @@ users = {
     "Ева": {"role": "user", "active": False},
     "Данил": {"role": "user", "active": True}
 }
-
-print(find_role_active(users))
-
-users = {
-    "Аня": {"role": "admin", "active": True},
-    "Борис": {"role": "user", "active": False},
-    "Глеб": {"role": "admin", "active": True},
-    "Ева": {"role": "user", "active": False},
-    "Данил": {"role": "user", "active": True}
-}
-print(format_user_roles(users))
-
-users = {
-    "Аня": {"role": "admin", "active": True},
-    "Борис": {"role": "user", "active": False},
-    "Глеб": {"role": "admin", "active": True},
-    "Ева": {"role": "user", "active": False},
-    "Данил": {"role": "user", "active": True}
-}
-print(count_roles(users))
-
-
-# Ищем пользователей с определенной ролью и активностью
-users = {
-    "Аня": {"role": "admin", "active": True},
-    "Борис": {"role": "user", "active": False},
-    "Глеб": {"role": "admin", "active": True},
-    "Ева": {"role": "user", "active": False},
-    "Данил": {"role": "user", "active": True}
-}
-print(find_users(users, role="user", only_active=True))   # ['Данил']
-print(find_users(users, role="user", only_active=False))  # ['Борис', 'Данил', 'Ева']
-print(find_users(users, role="admin", only_active=True))  # ['Аня', 'Глеб']
+print(find_admins(users))# ищем пользователей по роли
+print(find_role_active(users))# ищем активных пользователей с ролью "user"
+print(format_user_roles(users))# собираем строки "Имя (роль)"
+print(count_roles(users))# считаем количество пользователей по ролям
+# Ищем пользователей с определенной ролью и активностью:
+print(find_users(users, role="user", only_active=True)) 
+print(find_users(users, role="user", only_active=False))  
+print(find_users(users, role="admin", only_active=True))  
 
 # ищем пользователей с определенным заказом еды(+ vegan)
 orders = {
@@ -444,7 +379,6 @@ orders = {
 }
 
 print(find_orders(orders, dish="салат", only_vegan=True)) # ['Борис']
-
 print(find_orders(orders, dish="пицца", only_vegan=False)) # ['Аня']
 
 # ищем псов и их имена
@@ -455,21 +389,17 @@ pets = {
 }
 print(find_pets(pets))
 
-# Ищем учеников, которые учатся в обоих классах
-class_a = ["Аня", "Борис", "Глеб", "Ева"]
-class_b = ["Глеб", "Данил", "Ева", "Жанна"]
-print(find_class(class_a, class_b))
 
-# Ищем учеников, которые учатся ТОЛЬКО  в одном из 2х классов 
 class_a = ["Аня", "Борис", "Глеб", "Ева"]
 class_b = ["Глеб", "Данил", "Ева", "Жанна"]
-print(find_only_class(class_a, class_b))
+print(find_class(class_a, class_b))# Ищем учеников, которые учатся в обоих классах
+print(find_only_class(class_a, class_b))# Ищем учеников, которые учатся ТОЛЬКО  в одном из 2х классов 
+
 
 # ищем имена, которые встречаются в списке больше 1 раза
 names = ["Аня", "Борис", "Аня", "Глеб", "Ева", "Глеб", "Аня"]
 print(find_repeated_names(names))
 
-# ищем повторяющиеся роли пользователей
 users = {
     "Аня": {"role": "admin", "active": True},
     "Борис": {"role": "user", "active": False},
@@ -478,29 +408,10 @@ users = {
     "Данил": {"role": "user", "active": True},
     "Жанна": {"role": "manager", "active": True}
 }
-print(find_repeated_roles(users))
+print(find_repeated_roles(users)) # ищем повторяющиеся роли пользователей
+print(find_unique_roles(users))# ищем роли, которые встречаются только 1 раз
+print(find_users_with_unique_roles(users))# ищем пользователей с уникальной ролью
 
-# ищем роли, которые встречаются только 1 раз
-users = {
-    "Аня": {"role": "admin", "active": True},
-    "Борис": {"role": "user", "active": False},
-    "Глеб": {"role": "admin", "active": True},
-    "Ева": {"role": "user", "active": False},
-    "Данил": {"role": "user", "active": True},
-    "Жанна": {"role": "manager", "active": True}
-}
-print(find_unique_roles(users))
-
-# ищем пользователей с уникальной ролью
-users = {
-    "Аня": {"role": "admin", "active": True},
-    "Борис": {"role": "user", "active": False},
-    "Глеб": {"role": "admin", "active": True},
-    "Ева": {"role": "user", "active": False},
-    "Данил": {"role": "user", "active": True},
-    "Жанна": {"role": "manager", "active": True}
-}
-print(find_users_with_unique_roles(users))
 
 orders = {
     "Аня": {"dish": "пицца", "vegan": False},
@@ -511,3 +422,114 @@ orders = {
     "Жанна": {"dish": "тофу", "vegan": True}
 }
 print(find_unique_vegan_dishes(orders))
+
+# получаем список всех ключей в словаре, отсортируем по алфавиту
+data = {
+    "orange": 3,
+    "apple": 5,
+    "banana": 2
+}
+print(find_all_keys(data))
+
+
+# Ищем, кто не заходил на сайт сегодня
+all_users = ["Аня", "Борис", "Глеб", "Ева", "Данил"]
+active_today = ["Глеб", "Ева"]
+print(find_inactive_users(all_users, active_today))
+
+# ищем пользователей с уникальной ролью, которые сегодян не заходили на сайт
+users = {
+    "Аня": {"role": "admin"},
+    "Борис": {"role": "user"},
+    "Глеб": {"role": "admin"},
+    "Ева": {"role": "user"},
+    "Данил": {"role": "user"},
+    "Жанна": {"role": "manager"}
+}
+
+active_today = ["Глеб", "Ева"]
+print(find_unique_role_today(users, active_today))  
+
+# удаляем четные числа
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(remove_even(numbers))
+
+
+names = ["Аня", "Борис", "Аня", "Глеб", "Ева", "Глеб", "Аня"]
+print(clean_names(names)) # ищем дубликаты и сортируем
+print(find_duplicates(names)) # Ищем элементы, которые встречаются больше 1 раза
+print(find_unique_names(names)) # ищем имена, которые встречаются ТОЛЬКО один раз
+
+words = ["кот", "бегемот", "слон", "анаконда", "мышь"]
+print(find_longest_word(words))# ищем самую длинную строку в списке
+print(find_shortest_word(words)) # самая короткая строка
+print(filter_long_words(words)) # ищем слова с длиной больше 4 символов
+print(remove_words_with_a(words)) # удаляем слова с "а"
+print(words_starting_with_m(words)) # ищем слова, начинающиеся на "м"
+print(same_first_last_letter(words)) # ищем слова, начинающиеся и заканчивающиейся одной и той же буквой
+print(difficult_filtered_words(words))
+
+
+
+numbers = [3, 7, 2, 10, 5]
+print(average_num(numbers)) # ищем среднее значение 
+print(more_that_5(numbers)) # ищем числа, которые больше 5
+
+words = ["кот", "молоко", "арбуз", "мышь", "дом", "мак", "мама"]
+print(transform_m_words(words)) # сложная фильтрация (начинается на "м", длина не меньше 4, в верхний регистр, сортируем по алфавиту)
+
+print("\n capitalize_long_words")
+print(capitalize_long_words(words)) # капитализация слов по длине
+
+print("\n remove_even_length")
+print(remove_even_length(words)) # удаляем слова с четной длиной
+
+print("\n word_lengths")
+print(word_lengths(words)) # преобразуем слова в длины
+
+allowed_lengths = [3, 5]
+print("\n filter_by_allowed_lengths")
+print(filter_by_allowed_lengths(words, allowed_lengths)) # оставляем слова с "разрешенной" длиной 
+
+allowed_lengths = [3, 4]
+allowed_starts = ["м", "ч"]
+print("\n filter_by_lengths_and_start")
+print(filter_by_lengths_and_start(words, allowed_lengths, allowed_starts))
+
+print("\n is_even") # проверяем четность числа
+print(is_even(5))
+print(is_even(8))
+
+print("\n is_long_word") # проверка, что длина слова больше 5
+print(is_long_word("арбуз"))
+print(is_long_word("паламера"))
+
+print("\n vowels_start")
+print(vowels_start("Обезьяна"))
+print(vowels_start("пальма"))
+
+print("\n is_big_and_divisible") # проверка, что число больше 10 и делится на 3
+print(is_big_and_divisible(9))
+print(is_big_and_divisible(90))
+print(is_big_and_divisible(12))
+
+
+print("\n is_title_and_multiple_words")# проверка, что строка начинается с заглавной буквы и содержит больше 1 слова
+print(is_title_and_multiple_words("привет"))
+print(is_title_and_multiple_words(" привет пока"))
+print(is_title_and_multiple_words("Привет"))
+print(is_title_and_multiple_words("Привет пока"))
+
+print("n\ is_alpha_only")# проверка, что строка содержит только буквы, без цифр и символов
+print(is_alpha_only("Привет"))
+print(is_alpha_only("привет:)"))
+print(is_alpha_only("выпей воды"))
+print(is_alpha_only("113"))
+
+print("\n total_sum") # ищем сумму всех переданных чисел
+print(total_sum(1, 2, 3))
+print(total_sum(10, 20, 30))
+print(total_sum())
+
+print("\n filter_strings") # возвращаем только строки
+print(filter_strings(name="Anna", age=25, city="Moscow"))
