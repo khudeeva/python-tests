@@ -1,5 +1,5 @@
 # main.py
-from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit, unique_email, common_products, unique_words, who_skipped, get_user_names, keys_list, name_id_pairs, names_id, get_active_users, get_inactive_users, find_admins, find_role_active, format_user_roles, count_roles, find_users, find_orders, find_pets, find_class, find_only_class, find_repeated_names, find_repeated_roles, find_unique_roles, find_users_with_unique_roles, find_unique_vegan_dishes, find_all_keys, find_inactive_users, find_unique_role_today, remove_even, clean_names, find_duplicates, find_unique_names, find_longest_word, find_shortest_word, average_num, more_that_5, filter_long_words, remove_words_with_a, words_starting_with_m, same_first_last_letter, difficult_filtered_words, transform_m_words, capitalize_long_words, remove_even_length, word_lengths, filter_by_allowed_lengths, filter_by_lengths_and_start, is_even, is_long_word, vowels_start, is_big_and_divisible, is_title_and_multiple_words, is_alpha_only, total_sum, filter_strings# Импортируем функцию из пакета utils
+from utils.math_utils import multiply, greet, multiply_all, user_profile, apply_operation, apply_multiple_operations, filter_numbers, sort_by_key, filtered_words, apply_operations, sort_by_last_letter, longest_word, filter_by_first_letter, sum_of_squares, is_palindrome, count_vowels, average, shortest_word, closest_to_average, double, power, sum_all, sum_even_all, multiply_odd_all, max_difference, average_arifmetic, average_square, filter_by_vowels_count, remove_duplicates, remove_repeated, filter_vowel_words, filter_consonant_words, filter_two_vowels, filter_even_length, filter_same_first_last, filter_unique_letters, filter_repeated_letters, filter_by_digits_sum, filter_by_unique_letters, sum_of_digits, count_words, longest_word, most_vowels_word, replace_letters, word_lengths, most_frequent_word, least_frequent_word, count_sentences, replace_digits, divided_sentences, replace_words,  extract_numbers, find_words, find_dates, get_user_info, filter_unique, update_dict, find_unique_words, unique_numbers, count_unique, common_numbers, unique_from_first, unique_numbers_from_both, has_common_elements, is_subset, is_disjoint,has_duplicates, count_unique_pages, unique_users, who_didnt_submit, unique_email, common_products, unique_words, who_skipped, get_user_names, keys_list, name_id_pairs, names_id, get_active_users, get_inactive_users, find_admins, find_role_active, format_user_roles, count_roles, find_users, find_orders, find_pets, find_class, find_only_class, find_repeated_names, find_repeated_roles, find_unique_roles, find_users_with_unique_roles, find_unique_vegan_dishes, find_all_keys, find_inactive_users, find_unique_role_today, remove_even, clean_names, find_duplicates, find_unique_names, find_longest_word, find_shortest_word, average_num, more_that_5, filter_long_words, remove_words_with_a, words_starting_with_m, same_first_last_letter, difficult_filtered_words, transform_m_words, capitalize_long_words, remove_even_length, word_lengths, filter_by_allowed_lengths, filter_by_lengths_and_start, is_even, is_long_word, vowels_start, is_big_and_divisible, is_title_and_multiple_words, is_alpha_only, total_sum, filter_strings, filter_numbers_kwargs, count_strings, summarize_and_collect_strings, find_booleans, count_booleans,  multiply_all # Импортируем функцию из пакета utils
 from math import prod
 
 print(multiply(3, 7))  # 21
@@ -533,3 +533,23 @@ print(total_sum())
 
 print("\n filter_strings") # возвращаем только строки
 print(filter_strings(name="Anna", age=25, city="Moscow"))
+
+print("\n filter_numbers_kwargs") # возвращаем только числа
+print(filter_numbers_kwargs(name="Anna", age=30, height=1.68, active=True))
+
+print("\n count_strings")#считаем количество строк
+print(count_strings(name="Anna", age=30, city="Moscow", height = 1.7))
+
+print("\n summarize_and_collect_strings") # суммируем *args, а из **kwargs берем только строки
+print(summarize_and_collect_strings(1, 2, 3, name="anna", age=30, city="Perm"))
+
+print("\n find_booleans") # ищем ключи, значения которыз булевые
+print(find_booleans(active=True, name="Аня", verified=False, age=25))
+
+print("\n count_booleans") # считаем количество булевых значений
+print(count_booleans(active=False, name="Anna", age=30, verified=True))
+
+print("\n multiply_all") # перемножаем все переданные числа
+print(multiply_all(2, 3, 4))
+print(multiply_all(11, 5))
+

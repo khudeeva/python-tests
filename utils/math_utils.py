@@ -837,3 +837,51 @@ def filter_strings(**kwargs):
         if isinstance(value, str):
             new_dict[key] = value
     return new_dict
+
+# возвращаем только числовые параметры
+def filter_numbers_kwargs(**kwargs):
+    new_dict = {}
+    for key, value in kwargs.items():
+        if isinstance(value,(int, float)) and not isinstance(value, bool):
+            new_dict[key] = value
+    return new_dict
+
+# считаем количество строк
+def count_strings(**kwargs):
+    count = 0
+    for key, value in kwargs.items():
+        if isinstance(value, str):
+            count +=1
+    return count
+
+# суммируем *args, а из **kwargs берем только строки
+def summarize_and_collect_strings(*args, **kwargs):
+    strings = [] # создаем список для kwargs
+    for key, value in kwargs.items():
+        if isinstance(value, str):
+            strings.append(value) # добавляем строки в список
+    return sum(args), strings
+
+# Ищем ключи, значения которых булевые (True\False)
+def find_booleans(**kwargs):
+    booleans = []
+    for key, value in kwargs.items():
+        if isinstance (value, bool):
+            booleans.append(key)
+    return booleans
+
+# считаем количество булевых значений
+def count_booleans(**kwargs):
+    count = 0
+    for key, value in kwargs.items():
+        if isinstance(value, bool):
+            count += 1
+    return count 
+
+# возвращаем произведение всех переданных чисел
+def multiply_all(*args):
+    result = 1
+    for x in args:
+        result *= x
+    return result
+
