@@ -79,3 +79,55 @@ def count_letter_frequency(text, letter):
     text = text.lower()
     letter = letter.lower()
     return sum(1 for char in text if char == letter)
+
+# принимаем строку и возвращаем подходящий результат
+def analyze_string(text):
+    if text.isspace(): # ! важен порядок выполнения 
+        return "Только пробелы"
+    elif not text.strip():
+        return "Пустая строка"
+    elif text.isdigit():
+        return "Цифры"
+    elif text.isalpha():
+        return "Буквы"
+    elif not any(char.isalnum() for char in text): #нет ни букв, ни цифр
+        return "Только спецсимволы"
+    else:
+        return "Смешанная строка"
+
+# анализ регистра строки
+def analyze_case(text):
+    if text.isupper():
+        return "Все буквы заглавные"
+    elif text.islower():
+        return "Все буквы строчные"
+    elif not any(char.isalpha() for char in text):
+        return "Нет букв"
+    else:
+        return "Смешанный регистр"
+
+# начало строки и точка в конце
+def describe_string(text):
+    if text[0].isupper() and text.endswith("."):
+        return "Корректное предложение"
+    elif text[0].isupper() and not text.endswith("."):
+        return "Нет точки в конце"
+    elif not text[0].isupper() and text.endswith("."):
+        return "Нет заглавной буквы в начале"
+    else:
+        return "Некорректная строка"
+
+# классифицирем слово по гласным,согласным
+def classify_word(word):
+    vowels = "аеёиоуыэюя"
+    consonants = "бвгджзйклмнпрстфчцчшщ"
+    letters = [char.lower() for char in word if char.isalpha()]
+    
+    if not letters:
+        return "Нет букв"
+    elif all(char in vowels for char in letters):
+        return "Только гласные"
+    elif all(char in consonants for char in letters):
+        return "Только согласные"
+    else:
+        return "Смешанное"
