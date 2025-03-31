@@ -1,4 +1,4 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word)
 
 def test_reverse_string():
     assert reverse_string("мир") == "рим"
@@ -163,3 +163,11 @@ def test_classify_word_mixed():
     assert classify_word("топот") == "Смешанное"
 def test_classify_word_mixed_case():
     assert classify_word("БаРд") == "Смешанное"
+
+
+def test_classify_rich_word():
+    assert classify_rich_word("аисточка") == "Богатое слово"
+def test_classify_rich_word_no_rich():
+    assert classify_rich_word("тааанец") == "Не богатое"
+def test_classify_rich_word_not_rich():
+    assert classify_rich_word("аист") == "Не богатое"

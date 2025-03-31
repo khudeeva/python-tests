@@ -131,3 +131,16 @@ def classify_word(word):
         return "Только согласные"
     else:
         return "Смешанное"
+    
+# Ищем "богатое слово"(если больше 3 гласных и меньше 3 одинаковых букв подряд)
+def classify_rich_word(word):
+     vowels = "аеёиоуыэюя"
+     vowels_count = sum(1 for letter in word if letter in vowels)
+
+     for i in range(len(word) - 2):
+         if word[i] == word[i+1] == word[i+2]:
+             return "Не богатое"
+     return "Богатое слово" if vowels_count > 3 else "Не богатое"
+
+
+ 
