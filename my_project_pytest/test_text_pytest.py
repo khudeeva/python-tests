@@ -1,4 +1,4 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words)
 
 def test_reverse_string():
     assert reverse_string("мир") == "рим"
@@ -171,3 +171,64 @@ def test_classify_rich_word_no_rich():
     assert classify_rich_word("тааанец") == "Не богатое"
 def test_classify_rich_word_not_rich():
     assert classify_rich_word("аист") == "Не богатое"
+
+def test_analyze_text():
+    assert analyze_text("Привет, как дела?") == {'Слова': 3, 'Буквы': 13, 'Пробелы': 2}
+def test_analyze_not_spaces():
+    assert analyze_text("каракатица") == {'Слова': 1, 'Буквы': 10, 'Пробелы': 0}
+def test_analyze_text_one_letters():
+    assert analyze_text("аааааааа ааааааааааааа") == {'Слова': 2, 'Буквы': 21, 'Пробелы': 1}
+def test_analyze_text_only_spaces():
+    assert analyze_text("     ") == {'Слова': 0, 'Буквы': 0, 'Пробелы': 5}
+
+def test_letter_frequency():
+    assert letter_frequency("Привет, мир!")   == {'п': 1, 'р': 2, 'и': 2, 'в': 1, 'е': 1, 'т': 1, 'м': 1}
+def test_letter_frequency_one_word():
+    assert letter_frequency("капитализация") == {'к': 1, 'а': 3, 'п':1,'и': 3, 'т': 1, 'л': 1 ,'з': 1, 'ц': 1, 'я': 1}
+
+def test_word_frequency_one_word():
+    assert word_frequency("самарканд") == {'самарканд': 1}
+def test_word_frequency_two_words():
+    assert word_frequency("капуста зеленая") == {'капуста': 1, 'зеленая': 1} 
+def test_word_frequency_none():
+    assert word_frequency("") == {}  
+def test_word_frequency_repeat():
+    assert word_frequency("дом дом сад сад сад") == {'дом': 2, 'сад': 3}
+def test_word_frequency_mixed_case():
+    assert word_frequency("Привет привет ПРИВЕТ") == {'привет': 3}
+def test_word_frequency_symbols():
+    assert word_frequency("Привет, мир!") == {'привет,': 1, 'мир!': 1}
+
+def test_repeat_text():
+    assert repeat_text("Привет") == "ПриветПривет"
+def test_has_upper_start():
+    assert has_upper("Привет") == True
+def test_has_upper_end():
+    assert has_upper("привеТ") == True
+def test_has_upper_false():
+    assert has_upper("привет") == False
+
+def test_has_upper_start():
+    assert has_upper("Каравай") == True
+def test_has_upper_end():
+    assert has_upper("караваН") == True
+def test_has_upper_medium():
+    assert has_upper("каРл") == True
+def test_has_upper_false():
+    assert has_upper("сарай") == False
+
+def test_all_capitalized_true():
+    assert all_capitalized(["Привет", "Python"]) == True
+def test_all_capitalized_one():
+    assert all_capitalized(["Привет", "помидор"]) == False
+def test_all_capitalized_false():
+    assert all_capitalized(["привет", "пока"]) == False
+
+def test_describe_words_string():
+    assert describe_words(["дом", "море", "поле"]) == "Все строчные"
+def test_describe_words_upper():
+    assert describe_words(["Дом", "Море", "Поле"]) == "Все заглавные"
+def test_describe_words_mixed():
+    assert describe_words(["дом", "Море", "поле"]) == "Смешанные"
+def test_describe_words_empty():
+    assert describe_words([]) == "Список пуст"

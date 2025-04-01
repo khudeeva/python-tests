@@ -1,3 +1,4 @@
+import re
 # переворачиваем строку 
 def reverse_string(text):
     return text[::-1]
@@ -142,5 +143,84 @@ def classify_rich_word(word):
              return "Не богатое"
      return "Богатое слово" if vowels_count > 3 else "Не богатое"
 
+# возвращает словарь/строку с 3-мя значениями
+def analyze_text(text):
+    count_words = len(text.split())
+    count_letters = sum(1 for char in text if char.isalpha())
+    count_spaces =  text.count(" ")
+    return {
+        "Слова": count_words,
+        "Буквы": count_letters, 
+        "Пробелы": count_spaces
+    }
 
- 
+# считаем частоту каждой буквы в тексте
+def letter_frequency(text):
+    result = {}
+
+    for char in text.lower():
+        if char.isalpha():
+            if char in result:
+                result[char] +=1
+            else:
+                result[char] =1
+    return result 
+
+# частота слов в тексте
+def word_frequency(text):
+    result = {}
+    text = text.lower()
+    words = text.split()
+    for word in words:
+        if word in result:
+            result[word] += 1
+        else:
+            result[word] = 1
+    return result
+
+# ищем самое частое слово
+def most_common_word(text):   
+    text = text.lower()
+    clean_text = re.sub(r'[^а-яа-zё\s]', '', text)
+    words = clean_text.split()
+    freq = {}
+    
+    for word in words:
+        if word in freq:
+          freq[word] +=1
+        else:
+            freq[word] = 1
+
+    if not words:
+        return None
+    
+    max_count = max(freq.values())
+    for word in words:
+        if freq[word] == max_count:
+            return word
+
+# удвоение строки        
+def repeat_text(text):
+    return text + text
+
+# проверка, содержит ли тсрока хотя бы одну заглавную букву
+def has_upper(text):
+    return any(char.isupper() for char in text)
+
+# проверка все ли слова в списке начинаются с заглавной
+def all_capitalized(words):
+    return all(word[0].isupper() for word in words if word)
+        
+def describe_words(words):
+    if not words:
+        return "Список пуст"
+    all_lower = all(word[0].islower() for word in words if word)
+    all_upper = all(word[0].isupper() for word in words if word)
+
+    if all_lower:
+        return "Все строчные"
+    elif all_upper:
+        return "Все заглавные"
+    else:
+        return "Смешанные"
+
