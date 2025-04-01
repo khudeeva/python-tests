@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, book_data, user_info, words_list)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -136,3 +136,126 @@ def test_check_even_odd_pair_negative_odd():
     assert check_even_odd_pair(-7, -11) == "Оба нечётные"
 def test_check_even_odd_pair_with_zero():
     assert check_even_odd_pair(3, 0) == "Разные"
+
+# ПАРАМЕТРИЗАЦИЯ ТЕСТОВ
+@pytest.mark.parametrize("input, expected", [
+    (2, "Чётное"),
+    (3, "Нечётное"),
+    (0, "Чётное"),
+    (-1, "Нечётное")
+])
+def test_even_or_odd(input, expected):
+    assert even_or_odd(input) == expected
+
+@pytest.mark.parametrize("input, expected", [
+    (7, "Холодно"),
+    (16, "Тепло"),
+    (25, "Тепло"),
+    (30, "Жарко"),
+    (0, "Холодно"),
+    (-1, "Холодно")
+])
+def test_temperature_status(input, expected):
+    assert temperature_status(input) == expected
+
+@pytest.mark.parametrize("input, expected",[
+    (100, "Отлично"),
+    (95, "Отлично"),
+    (80, "Хорошо"),
+    (70, "Удовлетворительно"),
+    (60, "Удовлетворительно"),
+    (50, "Неудовлетворительно"),
+    (0, "Неудовлетворительно")
+])
+def test_grade_category(input, expected):
+    assert grade_category(input) == expected
+
+@pytest.mark.parametrize("input, expected",[
+    ("abcd", "Слабый"),
+    ("abckdh", "Средний"),
+    ("jfosmkcy", "Средний"),
+    ("djcomeunbds", "Сильный"),
+    ("", "Слабый")
+])
+def test_password_strength(input, expected):
+    assert password_strength(input) == expected
+
+# ФИКСТУРА
+# фикстура для списка чисел
+def test_sum(number_list):
+    assert sum(number_list) == 21
+def test_max_value(number_list):
+    assert max(number_list) == 6
+def test_length(number_list):
+    assert len(number_list) == 6
+
+# фикстура для строк
+def test_word_count(word_list):
+    assert len(word_list) == 4 # количество слов
+def test_longest_word_length(word_list):
+    assert max(len(word) for word in word_list) == 6 # длина самого длинного слова
+def test_all_lowercase(word_list):
+    assert all(word[0].islower() for word in word_list) # все начинаются со строчной буквы
+
+# фикструра словарь с пользователями
+def test_user_count(users):
+    assert len(users) == 3 # количество
+def test_active_users(users):
+    active = [name for name, info in users.items() if info["active"]]
+    assert active == ["Анна", "Мария"]
+def test_average_age(users):
+    age = [info["age"] for info in users.values()]
+    assert sum(age) / len(age) == 25.666666666666668
+
+# фикстура настройки пользователя
+def test_theme_setting(user_settings):
+    assert user_settings["theme"] == "dark"
+def test_language_settings(user_settings):
+    assert user_settings["language"] == "ru"
+def test_notification_settings(user_settings):
+    assert user_settings["notifications"] == True
+
+# фикстура числовой набор
+def test_max_number(number_data):
+    assert max(number_data) == 60
+def test_min_number(number_data):
+    assert min(number_data) == 8
+def test_even_count(number_data):
+    evens = [n for n in number_data if n % 2 == 0]
+    assert len(evens) == 3
+def test_sum_range(number_data):
+    total = sum(number_data)
+    assert 100 <= total <= 200 #сумма находится в пределах
+
+# фикстура 2 числа
+def test_sum(numbers):
+    a, b = numbers
+    assert a + b == 9
+def test_diff(numbers):
+    a, b = numbers
+    assert a -b == 3
+def test_multiply(numbers):
+    a, b = numbers
+    assert a * b == 18
+
+# фикстура словарь с данными книги
+def test_title_not_empty(book_data):
+    assert book_data["title"] != " "
+def test_author_has_upper(book_data):
+    assert any(char.isupper() for char in book_data["author"])
+def test_pages_more_than_100(book_data):
+    assert book_data["pages"] > 100
+
+# фикстура с данными пользователя
+def test_name_str(user_info):
+    assert isinstance(user_info["name"], str) # проверка, что тип данных строка
+def test_age_more_than_18(user_info):
+    assert user_info["age"] > 18
+
+# фикстура со списком слов
+def test_len_5(words_list):
+    assert len(words_list) == 5
+def test_find_word(words_list):
+    assert "пляж" in words_list 
+def test_len_all_words_more_than_3(words_list):
+    assert all(len(char) > 3 for char in words_list)

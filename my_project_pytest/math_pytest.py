@@ -1,3 +1,4 @@
+import pytest
 #  проверка четности числа
 def is_even(number):
     return number % 2 == 0
@@ -74,7 +75,92 @@ def check_even_odd_pair(a, b):
      else: 
         return "Разные" 
 
+# ПАРАМЕТРИЗАЦИЯ ТЕСТОВ
+# четное нечетное число
+def even_or_odd(n):
+    return "Чётное" if n % 2 == 0 else "Нечётное"
 
+# определяем категорию температуры
+def temperature_status(temp):
+    if temp < 10:
+        return "Холодно"
+    elif 10 <= temp <= 25:
+        return "Тепло"
+    else:
+        return "Жарко"
 
+# определяем категорию по баллам
+def grade_category(score):
+    if  90 <= score <= 100:
+        return "Отлично"
+    elif 75 <= score <=  89:
+        return "Хорошо"
+    elif 60 <= score <= 74:
+        return "Удовлетворительно"
+    else:
+        return "Неудовлетворительно"
 
+# проверка длины пароля
+def password_strength(password):
+    if len(password) < 6:
+        return "Слабый"
+    elif 6 <= len(password) <= 10:
+        return "Средний"
+    else:
+        return "Сильный"
+
+# ФИКСТУРА
+# фикстура для списка чисел
+@pytest.fixture
+def number_list():
+    return [1, 2, 3, 4, 5, 6]
+
+# фикстура для строк
+@pytest.fixture
+def word_list():
+    return {"яблоко", "банан", "киви", "ананас"}
+
+# фикструа словарь с пользователями
+@pytest.fixture
+def users():
+    return {
+        "Анна": {"age": 25, "active": True},
+        "Иван": {"age": 30, "active": False},
+        "Мария": {"age": 22, "active": True}
+    }
+# фикстура настройки пользователя
+@pytest.fixture
+def user_settings():
+    return {
+        "theme" : "dark",
+        "notifications": True,
+        "language": "ru"
+    }
+
+# фикстура числовой набор
+@pytest.fixture
+def number_data():
+    return [12, 45, 33, 8, 21, 60]
+
+# фикстура 2 числа
+@pytest.fixture
+def numbers():
+    return (6, 3)
+
+# фикстура словарь с данными книги
+@pytest.fixture
+def book_data():
+    return {
+        "title": "Мастер и Маргарита", "author": "Булгаков", "pages": 380
+    }
+
+# фикстура с данными пользователя
+@pytest.fixture
+def user_info():
+    return {"name": "Анна", "age": 30, "city": "Москва"}
+
+# фикстура со списком слов
+@pytest.fixture
+def words_list():
+    return ["море", "солнце", "пляж", "отдых", "волна"]
 
