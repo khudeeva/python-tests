@@ -1,4 +1,6 @@
 import re
+import pytest
+
 # переворачиваем строку 
 def reverse_string(text):
     return text[::-1]
@@ -223,4 +225,84 @@ def describe_words(words):
         return "Все заглавные"
     else:
         return "Смешанные"
+# ФИКСТУРА
+# фикстура словарь с данными книги
+@pytest.fixture
+def book_data():
+    return {
+        "title": "Мастер и Маргарита", "author": "Булгаков", "pages": 380
+    }
 
+# фикстура с данными пользователя
+@pytest.fixture
+def user_info():
+    return {"name": "Анна", "age": 30, "city": "Москва"}
+
+# фикстура со списком слов
+@pytest.fixture
+def words_list():
+    return ["море", "солнце", "пляж", "отдых", "волна"]
+
+# фикстура со списком словарей
+@pytest.fixture
+def people_data():
+    return [
+        {"name": "Alice", "age": 30},
+        {"name": "Bob", "age": 25},
+        {"name": "Charlie", "age": 40}
+]
+
+# фикстура со списком товаров
+@pytest.fixture
+def products_list():
+    return [
+         {"name": "Laptop", "price": 1200, "category": "electronics"},
+         {"name": "Tomato", "price": 320, "category": "product"},
+         {"name": "TV", "price": 4200, "category": "electronics"}
+    ]
+
+# фикстура список пользоватлей
+@pytest.fixture
+def users_list():
+    return [
+         {"username": "katya_01", "age": 25, "email": "katya@example.com"},
+         {"username": "ivan_87", "age": 35, "email": "ivan@example.com"},
+         {"username": "guest", "age": 15, "email": ""}
+    ]
+# фикстура: список фильмов
+@pytest.fixture
+def movies_list():
+    return [
+        {"title": "Inception", "rating": 8.8, "genre": "Sci-Fi", "year": 2010},
+        {"title": "The Godfather", "rating": 9.2, "genre": "Crime", "year": 1972},
+        {"title": "Interstellar", "rating": 8.6, "genre": "Sci-Fi", "year": 2014},
+        {"title": "Unknown", "rating": 0, "genre": "Comedy", "year": 2023}  # для проверки краевых случаев
+    ] 
+# фикстура + scope="module"
+@pytest.fixture(scope="module")
+def film_list():
+    print("Создаем список фильмов")
+    return [
+        {"title": "Matrix", "year": 1999},
+        {"title": "Tenet", "year": 2020}
+    ]
+# фикстура: список пользователей по активности
+@pytest.fixture(scope="module")
+def users_active():
+    print("Создаем список по активности")
+    return [
+        {"username": "admin", "active": True},
+        {"username": "guest", "active": False},
+        {"username": "moderator", "active": True}
+    ]
+# ОБЪЕДИНЕНИЕ ФИКСТУРЫ И ПАРАМЕТРИЗАЦИИ
+# фикстура: список книг
+@pytest.fixture(scope="module")
+def books_list():
+    print("Загружаем список книг")
+    return [
+        {"title": "1984", "author": "George Orwell", "year": 1949},
+        {"title": "Brave New World", "author": "Aldous Huxley", "year": 1932},
+        {"title": "Dune", "author": "Frank Herbert", "year": 1965}
+
+    ]

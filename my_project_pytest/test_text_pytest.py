@@ -1,4 +1,5 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list)
+import pytest
 
 def test_reverse_string():
     assert reverse_string("мир") == "рим"
@@ -232,3 +233,134 @@ def test_describe_words_mixed():
     assert describe_words(["дом", "Море", "поле"]) == "Смешанные"
 def test_describe_words_empty():
     assert describe_words([]) == "Список пуст"
+
+# фикстура словарь с данными книги
+def test_title_not_empty(book_data):
+    assert book_data["title"] != " "
+def test_author_has_upper(book_data):
+    assert any(char.isupper() for char in book_data["author"])
+def test_pages_more_than_100(book_data):
+    assert book_data["pages"] > 100
+
+# фикстура с данными пользователя
+def test_name_str(user_info):
+    assert isinstance(user_info["name"], str) # проверка, что тип данных строка
+def test_age_more_than_18(user_info):
+    assert user_info["age"] > 18
+
+# фикстура со списком слов
+def test_len_5(words_list):
+    assert len(words_list) == 5
+def test_find_word(words_list):
+    assert "пляж" in words_list 
+def test_len_all_words_more_than_3(words_list):
+    assert all(len(char) > 3 for char in words_list)
+
+def test_all_have_name(people_data):
+    for person in people_data:
+        assert "name" in person
+def test_age_more_than_20(people_data):
+    for person in people_data:
+        assert person["age"] > 20 
+
+
+
+def test_names_products(products_list):
+    for product in products_list:
+        assert isinstance (product["name"], str) 
+
+def test_have_price_and_more_than_0(products_list):
+    for product in products_list:
+        assert  "price" in product
+        assert product["price"] > 0
+def test_has_electronics(products_list):
+    assert any(product["category"] == "electronics" for product in products_list)
+def test_all_have_category(products_list):
+    for product in products_list:
+        assert "category" in product
+        # ПРОВЕРКА С any(...)
+def test_has_expensive_product(products_list): # проверка, что ХОТЯ бы 1 товар дороже 3000
+    assert any(product["price"]> 3000 for product in products_list)
+    
+    # ПРОВЕРКА С all(...)
+def test_all_have_name(products_list): # убедимся, что у всех товаров есть ключ и он не пустой
+        assert all("name" in product and product["name"].strip() !="" for product in products_list)
+
+    # ПРОВЕРКА С ЦИКЛОМ for
+def test_no_negative_price(products_list): # проверка, что ни у одного товара нет отрицательной цены
+    for product in products_list:
+        assert product["price"] >= 0
+
+# фикстура: список пользоватей
+def test_all_have_username(users_list):
+    assert all("username" in user and user["username"].strip() !="" for user in users_list)
+def test_has_underage_user(users_list):
+    assert any(user["age"] < 18 for user in users_list)
+def test_valid_emails(users_list):
+    for user in users_list:
+        if user["email"]: # проверяем, что email не пустой
+            assert "@" in user["email"]
+
+# фикстура: список фильмов
+def test_all_have_title(movies_list):
+    assert all("title" in movie and movie["title"].strip() !="" for movie in movies_list)
+def test_one_have_rating_9(movies_list):
+    assert any(movie["rating"] > 9 for movie in movies_list)
+def test_range_year(movies_list):
+    for movie in movies_list:
+        assert  1900 <= movie["year"] <= 2025
+def test_all_have_genre(movies_list):
+     assert all("genre" in movie and movie["genre"].strip() !="" for movie in movies_list)
+    
+#  фикстура + scope="module"
+def test_contains_matrix(film_list):
+    title = [film["title"] for film in film_list]
+    assert "Matrix" in title
+def test_all_movies_after_1980(film_list):
+    assert all(film["year"] > 1980 for film in film_list)
+
+# фикстура: список пользователей по активности
+def test_user_with_guest(users_active):
+    assert any(user["username"] == "guest" for user in users_active)
+def test_all_active_users_len_more_than_4(users_active):
+    for user in users_active:
+        if user["active"] == True: 
+            assert len(user["username"]) > 4
+ # проверяем, что год ывпуска соответствует ожидаемому           
+@pytest.mark.parametrize("title, expected_year", [
+    ("1984", 1949),
+    ("Brave New World", 1932),
+    ("Dune", 1965)
+])
+def test_years_books(books_list, title, expected_year):
+    book = next(book for book in books_list if book["title"] == title)
+    assert book["year"]== expected_year
+
+# проверяем, что у каждой книги - правильный автор
+@pytest.mark.parametrize("title, expected_author",[
+    ("1984", "George Orwell"),
+    ("Brave New World", "Aldous Huxley"),
+    ("Dune", "Frank Herbert")   
+])
+def test_author_of_books(books_list, title, expected_author):
+    book = next(book for book in books_list if book["title"] == title)
+    assert book["author"] == expected_author
+# проверка длины названия книги
+@pytest.mark.parametrize("title, min_length",[
+    ("1984", 4),
+    ("Brave New World", 13),
+    ("Dune", 4)
+])
+def test_min_length_of_book(books_list, title, min_length):
+    book = next(book for book in books_list if book["title"] == title)
+    assert len(book["title"]) >= min_length
+
+# проверка длины имени автора
+@pytest.mark.parametrize("title, min_author_length",[
+    ("1984", 12),
+    ("Brave New World", 12),
+    ("Dune", 12)
+])
+def test_min_author_length(books_list, title, min_author_length):
+    book = next(book for book in books_list if book["title"] == title)
+    assert len(book["author"]) >= min_author_length
