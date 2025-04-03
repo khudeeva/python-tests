@@ -410,4 +410,37 @@ def validate_password(password_list):
         raise ValueError("Password must contain at least one digit")
     
     return "Password accepted"
+
+# проверка стоимости доставки
+def calculate_shipping(order):
+    weight = order["weight"]
+    destination = order["destination"]
+
+    if not isinstance(weight,(int, float)):
+        raise TypeError("Weight must be a number")
+    if weight <=0:
+        raise ValueError("Weight must be positive")
+    if destination not  in ["local", "international"]:
+        raise ValueError("Destination must be 'local' or 'internationsl'")
+    if destination == "local":
+        return weight * 5
+    else:
+        return weight * 10
+
+# налог на покупку
+def calculate_tax(item):
+    price = item["price"]
+    tax_rate = item["tax_rate"]
+
+    if not isinstance(price, (int, float)):
+        raise TypeError("Price must be a number")
+    if not isinstance(tax_rate, (int, float)):
+        raise TypeError("Tax_rate must be a number")
+    if price < 0:
+        raise ValueError("Price must be positive")
+    if tax_rate < 0:
+        raise ValueError("Tax_rate must be positive")
+    return price + (price * tax_rate)
+
+
     

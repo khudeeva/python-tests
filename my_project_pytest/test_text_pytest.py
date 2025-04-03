@@ -1,4 +1,4 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax)
 import pytest
 # переворачиваем строку
 def test_reverse_string():
@@ -505,3 +505,32 @@ def test_validate_password(password_list, expected_result):
             validate_password(password_list)
     else:
         assert validate_password(password_list) == expected_result 
+
+# проверка стоимости доставки
+@pytest.mark.parametrize("order, expected_result", [
+    ({"weight": 2, "destination": "local"}, 10),
+    ({"weight": 1.5, "destination": "international"}, 15.0),
+    ({"weight": 0, "destination": "local"}, ValueError),
+    ({"weight": "heavy", "destination": "local"}, TypeError),
+    ({"weight": 3, "destination": "moon"}, ValueError),
+])
+def test_calculate_shipping(order, expected_result):
+    if  isinstance(expected_result, type) and issubclass(expected_result, Exception):
+        with pytest.raises(expected_result):
+            calculate_shipping(order)
+    else:
+        assert calculate_shipping(order) == expected_result
+
+# проверка налог на покупку
+@pytest.mark.parametrize("item, expected_result", [
+    ({"price": 100, "tax_rate": 0.2}, 120),
+    ({"price": 200, "tax_rate": 0.15}, 230),
+    ({"price": -100, "tax_rate": 0.2}, ValueError),
+    ({"price": 100, "tax_rate": "high"}, TypeError)
+])
+def test_calculate_tax(item, expected_result):
+    if isinstance(expected_result, type) and issubclass(expected_result, Exception):
+        with pytest.raises(expected_result):
+            calculate_tax(item)
+    else:
+        assert calculate_tax(item) == expected_result
