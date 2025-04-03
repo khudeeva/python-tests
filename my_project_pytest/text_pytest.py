@@ -306,3 +306,108 @@ def books_list():
         {"title": "Dune", "author": "Frank Herbert", "year": 1965}
 
     ]
+# ПРОВЕРКА ИСКЛЮЧЕНИЙ 
+# проверка исключения(KeyError)
+def get_price(product):
+    return product["price"]
+
+# ищем автора книги, с помощью with pytest.raises()
+def get_author(book):
+    return book["author"]
+
+# проверяем рейтинг фильма
+def get_rating(movie):
+    rating = movie["rating"] # может вызвать KeyError
+    if not isinstance(rating,(int, float)):
+        raise TypeError("Rating must be a number")
+    if rating < 0 or rating > 10:
+        raise ValueError("Rating must be between 0 and 10")
+    return rating
+
+# проверка страниц книги
+def get_pages(book):
+    pages = book["pages"]  # KeyError
+    if not isinstance(pages,(int, float)): # TypeError
+        raise TypeError("Pages must be a number")
+    if pages <= 0 or pages > 2000: # ValueError
+        raise ValueError("Pages must be between 1 and 2000")
+    return pages
+
+# тестируем список пользователей (фикстура+ параметризация)
+@pytest.fixture(scope="module")
+def users_list():
+    return [
+    {"username": "admin", "age": 35, "email": "admin@example.com"},
+    {"username": "guest", "age": 15, "email": ""},
+    {"username": "manager", "age": "unknown", "email": "manager@example.com"}
+]
+
+# проверка возраста с исключениями
+def get_age(user):
+    age = user["age"]
+    if not isinstance(age,(int, float)):
+        raise TypeError("Age must be a number")
+    if age < 0:
+        raise ValueError("Age must be between 1 and 60")
+    return age
+    
+# проверка объединения на списке книг
+@pytest.fixture(scope="module")
+def books_list_by_pages():
+    return [
+    {"title": "Dune", "pages": 412, "available": True},
+    {"title": "1984", "pages": 328, "available": False},
+    {"title": "Brave New World", "pages": "many", "available": True}
+]
+#работа с исключениями по страницам книг
+def get_pages_of_book(books):
+    pages = books["pages"]
+    if not isinstance(pages,(int, float)):
+        raise TypeError("Pages must be a number")
+    if pages <= 0:
+        raise ValueError("Pages must be more than 0")
+    return pages
+
+# параметризация + исключения
+def get_discounted_price(product):
+    # получаем price, discount из словаря
+    price = product["price"]
+    discount = product["discount"]
+    # проверка, что price - число, иначе - ошибка
+    if not isinstance(price, (int, float)):
+        raise TypeError("Price must be a number")
+    # проверка, что discount - число, иначе - ошибка
+    if not isinstance(discount, (int, float)):
+        raise TypeError("Discount must be a number")
+    # проверка, что price > 0(положительное число)
+    if price <= 0:
+        raise ValueError("Price  must be positive")
+    # проверка, что скидка от 0 до 1, иначе - ошиибка
+    if discount < 0 or discount >1:
+        raise ValueError("Discount must be be between 0 and 1")
+    # возвращаем стоимость со скидкой 
+    return price - (price * discount)
+
+# ищем возраст (параметризация + проверка исключений)
+def get_age_person(user):
+    age = user["age"]
+    # проверяем, что это число
+    if not isinstance(age, (int, float)):
+        raise TypeError("Age must be a number")
+    if age <= 0 :
+        raise ValueError("Age must be positive")
+    return age
+
+# проверка пароля пользователя
+def validate_password(password_list):
+    password = password_list["password"]
+    # проверяем, что это строка
+    if not isinstance(password, str):
+        raise TypeError("Password must be a string")
+    if len(password) < 6:
+        raise ValueError("Password must be after 6 symbols")
+    if not any(char.isdigit() for char in password):
+        raise ValueError("Password must contain at least one digit")
+    
+    return "Password accepted"
+    

@@ -1,9 +1,9 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password)
 import pytest
-
+# переворачиваем строку
 def test_reverse_string():
     assert reverse_string("мир") == "рим"
-
+# считаем гласные в строке
 def test_vowels_in_moloko():# проверка 3 гласных в слове
     assert count_vowels("молоко") == 3
 def test_vowels_dom():# проверка 1 гласная в слове
@@ -364,3 +364,144 @@ def test_min_length_of_book(books_list, title, min_length):
 def test_min_author_length(books_list, title, min_author_length):
     book = next(book for book in books_list if book["title"] == title)
     assert len(book["author"]) >= min_author_length
+
+# ПРОВЕРКА ИСКЛЮЧЕНИЙ 
+# проверка исключения(KeyError)
+def test_get_price_valid():
+    product = {"name": "Milk", "price": 120}
+    assert get_price(product) == 120
+def test_get_price_missing_key():
+    product = {"name": "Bread"}
+    with pytest.raises(KeyError):
+        get_price(product)
+
+# проверка исключений автора книги
+def test_get_author_valid():
+    book = {"title": "Dune", "author": "Frank Herbert"}
+    assert get_author(book) == "Frank Herbert"
+
+def test_get_author_invalid():
+    book = {"title": "Inkom"} 
+    with pytest.raises(KeyError):
+        get_author(book)
+
+# проверяем рейтинг фильма с pytest.raises
+def test_get_rating_valid(): # корректный рейтинг
+    movie = {"title": "Inception", "rating": 8.8}
+    assert get_rating(movie) == 8.8
+
+def test_get_rating_invalid(): # нет ключа - ожидаем KeyError
+    movie = {"title": "Inception"}
+    with pytest.raises(KeyError):
+        get_rating(movie)
+
+def test_get_rating_str(): #рейтинг - строка - TypeError
+    movie = {"title": "Inception", "rating": "high"}
+    with pytest.raises(TypeError):
+        get_rating(movie)
+
+def test_get_rating_range():# рейтинг вне диапазона
+    movie = {"title": "Inception", "rating": 11}
+    with pytest.raises(ValueError):
+        get_rating(movie)
+
+# проверка страниц книги
+def test_get_pages_valid():
+    book = {"title": "Yoga", "pages": 130}
+    assert get_pages(book) == 130
+def test_get_pages_no_key():
+    book = {"titlt": "Yoga"}
+    with pytest.raises(KeyError):
+        get_pages(book)
+def test_get_pages_no_str():
+    book = {"title": "Yoga", "pages": "low"}
+    with pytest.raises(TypeError):
+        get_pages(book)
+def test_get_pages_no_value():
+    book = {"title": "Yoga", "pages": 3000}
+    with pytest.raises(ValueError):
+         get_pages(book)
+
+# тестируем список пользователей (фикстура + параметризация)
+@pytest.mark.parametrize("username, expected_email", [
+    ("admin", "admin@example.com"),
+    ("manager", "manager@example.com")
+]) # проверка, что email есть у admin, manager
+def test_users_list_email(users_list, username,  expected_email):
+    user = next(user for user in users_list if user["username"]== username)
+    assert user["email"] == expected_email 
+
+# проверка возраста исключениями
+def test_get_age_no_number():
+    user = {"username": "manager", "age": "unknown", "email": "manager@example.com"}
+    with pytest.raises(TypeError):
+        get_age(user)
+
+def test_get_age_negative():
+    user = {"username": "manager", "age": -1, "email": "manager@example.com"}
+    with pytest.raises(ValueError):
+        get_age(user)
+
+# проверка объединения со списком книг
+@pytest.mark.parametrize("title, expected_pages",[
+ ("Dune", 412),
+ ("1984", 328)
+])
+def test_books_list_pages(books_list_by_pages, title, expected_pages):
+    book = next(book for book in books_list_by_pages if book["title"]== title)
+    assert book["pages"] == expected_pages
+
+# работа с исключенями по страницам книг
+def test_get_pages_no_pages():
+    books = {"title": "Brave New World", "pages": "many", "available": True}
+    with pytest.raises(TypeError):
+        get_pages_of_book(books)
+def test_get_pages_negative():
+    books = {"title": "Brave New World", "pages": -10, "available": True}
+    with pytest.raises(ValueError):
+        get_pages_of_book(books)
+
+# параметризация + проверка исключений
+@pytest.mark.parametrize("product, expected_result", [
+    ({"name": "Phone", "price": 1000, "discount": 0.1}, 900),
+    ({"name": "Book", "price": 500, "discount": 2}, ValueError),                 # скидка слишком большая
+    ({"name": "Pen", "price": 0, "discount": 0.1}, ValueError),                 # цена = 0
+    ({"name": "Watch", "price": "expensive", "discount": 0.2}, TypeError),     # цена строка
+    ({"name": "Bag", "price": 700, "discount": "a lot"}, TypeError),           # скидка строка
+])
+def test_discounted_price(product, expected_result):
+    if isinstance(expected_result, type) and issubclass(expected_result, Exception):
+        with pytest.raises(expected_result):
+            get_discounted_price(product)
+    else:
+        assert get_discounted_price(product) == expected_result
+
+# ищем возраст (параметризация + проверка исключений)
+@pytest.mark.parametrize("user, expected_result", [
+    ({"name": "Anna", "age": 25}, 25),
+    ({"name": "Bob", "age": 0}, ValueError),
+    ({"name": "Alice", "age": "unkown"}, TypeError),
+    ({"name": "Maria", "age": -20}, ValueError),
+    ({"name": "Olga", "age": 21.6}, 21.6),
+    ({"name": "Oleg", "age": None},  TypeError)
+])
+def test_get_age_person(user, expected_result):
+    if isinstance(expected_result, type) and issubclass(expected_result, Exception):
+        with pytest.raises(expected_result):
+            get_age_person(user)
+    else:
+        assert get_age_person(user) == expected_result
+
+@pytest.mark.parametrize("password_list, expected_result",[
+    ({"password": "abc123"}, "Password accepted"),
+    ({"password": "short"}, ValueError),
+    ({"password": 123456}, TypeError),
+    ({"password": "abcdef"}, ValueError),
+    ({"password": "pass123word"}, "Password accepted")
+])
+def test_validate_password(password_list, expected_result):
+    if isinstance(expected_result, type) and issubclass(expected_result, Exception):
+        with pytest.raises(expected_result):
+            validate_password(password_list)
+    else:
+        assert validate_password(password_list) == expected_result 
