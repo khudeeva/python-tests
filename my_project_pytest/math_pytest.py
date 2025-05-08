@@ -147,20 +147,5 @@ def number_data():
 def numbers():
     return (6, 3)
 
-# фикстура словарь с данными книги
-@pytest.fixture
-def book_data():
-    return {
-        "title": "Мастер и Маргарита", "author": "Булгаков", "pages": 380
-    }
 
-# фикстура с данными пользователя
-@pytest.fixture
-def user_info():
-    return {"name": "Анна", "age": 30, "city": "Москва"}
-
-# фикстура со списком слов
-@pytest.fixture
-def words_list():
-    return ["море", "солнце", "пляж", "отдых", "волна"]
 

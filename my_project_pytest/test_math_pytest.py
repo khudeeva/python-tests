@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, book_data, user_info, words_list)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -238,24 +238,3 @@ def test_multiply(numbers):
     a, b = numbers
     assert a * b == 18
 
-# фикстура словарь с данными книги
-def test_title_not_empty(book_data):
-    assert book_data["title"] != " "
-def test_author_has_upper(book_data):
-    assert any(char.isupper() for char in book_data["author"])
-def test_pages_more_than_100(book_data):
-    assert book_data["pages"] > 100
-
-# фикстура с данными пользователя
-def test_name_str(user_info):
-    assert isinstance(user_info["name"], str) # проверка, что тип данных строка
-def test_age_more_than_18(user_info):
-    assert user_info["age"] > 18
-
-# фикстура со списком слов
-def test_len_5(words_list):
-    assert len(words_list) == 5
-def test_find_word(words_list):
-    assert "пляж" in words_list 
-def test_len_all_words_more_than_3(words_list):
-    assert all(len(char) > 3 for char in words_list)

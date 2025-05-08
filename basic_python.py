@@ -192,3 +192,95 @@ filtered_words = [
     and  6 <= len(word) <= 9
 ]
 print(filtered_words)
+# повторение 
+# переменные и типы данных
+name = "Ksenia"
+age = 25
+is_qa = True
+print(name, type(age), is_qa)
+
+username = "ksenia_k"
+age = 25
+is_active = True
+print(type(name))
+print(type(age))
+print(type(is_active))
+
+print("Типы переменных, person_profile")
+first_name = "Ksenia"
+age= 25
+is_student = False
+print(type(first_name))
+print(type(age))
+print(type(is_student))
+
+# список(List)
+cities = ["Perm", "Moscow", "Kazan", "Sochi", "Petersburg"]
+
+print(cities)
+print(cities[0])
+print(cities[4])
+print(len(cities))
+print("Perm" in cities)
+
+cities.append("Berlin")
+cities.remove("Sochi")
+
+print(cities)
+
+# список языков
+print("Список языков")
+language = ["Python", "Russian", "English"]
+print(len(language))
+print(language[1])
+print("English" in language)
+
+print("Список QA языков, langs")
+langs = ["Python", "SQL", "HTML"]
+print(len(langs))
+print("Python" in langs)
+print(langs[2])
+langs.append("CSS")
+langs.remove("SQL")
+print(langs)
+
+# словарь(dict)
+print("user")
+user ={
+    "name": "Ksenia",
+    "age": 25,
+    "city": "Perm",
+    "is_qa": True
+}
+print(user)
+print(user["name"])
+user["city"] = "Moscow"
+user["experience"] = 1
+del user["is_qa"]
+print(user)
+
+print("user_profile")
+user_profile = {
+    "username": username,
+    "age": age,
+    "active": is_active,
+    "skills": language
+}
+print(user_profile)
+print(user_profile["skills"])
+user_profile["location"] = "Russia"
+del user_profile["age"]
+print(user_profile)
+
+print("user_data")
+user_data = {
+    "name": first_name,
+    "age": age,
+    "student": is_student,
+    "skills": langs
+    }
+user_data["student"] = True
+user_data["city"] = "Perm"
+del user_data["age"]
+print(user_data["skills"])
+print(user_data)
