@@ -147,5 +147,45 @@ def number_data():
 def numbers():
     return (6, 3)
 
+# ПОВТОРЕНИЕ
+# проверка чётности числа
+def is_even_practice(number):
+   return number % 2 == 0
+
+# проверка деления a/b без остатка
+def is_divisible_practice(a, b):
+    if b == 0:
+        return False
+    return a % b == 0
+    
+# ищем большее из 2-х чисел
+def get_max(a, b):
+    return max(a, b)
+
+# ищем всю сумму чисел в списке
+def sum_list(numbers):
+    if not numbers:
+        return 0
+    return sum(numbers)
+
+# ищем среднее значение чисел в списке
+def average_practice(numbers):
+    if not numbers:
+        return 0
+    return sum(numbers)/len(numbers)
+
+# возвращаем произведение всех чисел в списке
+def multiply_list_practice(numbers):
+    result = 1
+    for x in numbers:
+        result *=x
+    return result
+    
+# возвращаем кортеж из минимального и максимального значения списка
+def find_min_max(numbers):
+    if not numbers:
+        return None
+    return (min(numbers), max(numbers))
+
 
 

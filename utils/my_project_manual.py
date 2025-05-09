@@ -7,7 +7,7 @@ from text_utils import (count_vowels, is_title_and_multiple_words,filtered_words
     replace_letters, word_lengths, replace_digits, divided_sentences,
     replace_words, extract_numbers, filtered_words_len, find_words,
     find_dates, find_unique_words, filter_by_unique_letters,
-    get_user_info, most_vowels_word, is_alpha_only, is_palindrome
+    get_user_info, most_vowels_word, is_alpha_only, is_palindrome, greet_user, count_vowels_practice
 )
 
 # 🔢 Импортируем функции, связанные с числами
@@ -610,4 +610,10 @@ print(count_booleans(active=False, name="Anna", age=30, verified=True))
 print("\n multiply_all") # перемножаем все переданные числа
 print(multiply_all(2, 3, 4))
 print(multiply_all(11, 5))
+
+# ПОВТОРЕНИЕ
+print(greet_user("Max"))
+
+print(count_vowels_practice("Привет"))
+print(count_vowels_practice("Солнце ясное"))
 

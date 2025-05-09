@@ -441,6 +441,34 @@ def calculate_tax(item):
     if tax_rate < 0:
         raise ValueError("Tax_rate must be positive")
     return price + (price * tax_rate)
+# ПОВТОРЕНИЕ
+def count_vowels_practice(text):
+    vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
+    return sum(1 for letter in text if letter in vowels)
+def reverse_text_practice(text):
+    return text[::-1]
+def normalize_text_practice(text):
+    return text.strip().lower()
 
+def count_words_practice(text):
+    words = text.split()
+    return len(words)
+
+def is_title_case(text):
+    stripped = text.lstrip()
+    if not stripped:
+        return False
+    return stripped[0].isupper()
+def count_unique_words_practice(text):
+    words = text.lower().split()
+    unique_words = set(words)
+    return len(unique_words)
+def contains_only_letters_practice(text):
+    return text.isalpha()
+# считаем количество заглавных букв в строке
+def count_uppercase(text):
+    return sum(1 for letter in text if letter.isupper())
+    
+     
 
     

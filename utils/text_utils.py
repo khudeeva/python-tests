@@ -195,3 +195,13 @@ def filtered_words(words, condition):
 # проверяем как функция возвращает кортеж
 def get_user_info(name, age, city):
     return(name, age, city)
+
+# ПОВТОРЕНИЕ
+# простая функция
+def greet_user(name):
+    return f"Hi, {name}"
+# подсчет гласных
+def count_vowels_practice(text):
+    vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
+    return sum(1 for letter in text if letter in vowels)
+    

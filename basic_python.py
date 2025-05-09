@@ -284,3 +284,38 @@ user_data["city"] = "Perm"
 del user_data["age"]
 print(user_data["skills"])
 print(user_data)
+
+print("Условные конструкции if/else")
+age = 21
+is_qa = True
+if age >= 18 and is_qa:
+    print("Добро пожаловать, QA!")
+else:
+    print("Доступ ограничен")
+
+print("Проверка балов if/elif/else")
+score = 78
+if score >= 90:
+    print("Отлично")
+elif score >=75:
+    print("Хорошо")
+elif score >=60:
+    print("Удовлетворительно")
+else:
+    print("Неудовлетворительно")
+
+print("Цикл for + range()")
+for i in range(1, 6):
+    print(i)
+
+print("Выводим только чётные числа")
+for i in range(2, 11):
+    if i % 2 == 0:
+     print(i)
+    
+print("Цикл for по списку языков")
+langs = ["Python", "SQL","HTML", "CSS"]
+for lang in langs:
+    print(lang)
+print(len(langs))
+print("JavaScript"in langs)

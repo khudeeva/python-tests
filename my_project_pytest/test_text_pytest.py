@@ -1,4 +1,4 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax,count_vowels_practice, reverse_text_practice, normalize_text_practice,count_words_practice, is_title_case, count_unique_words_practice, contains_only_letters_practice, count_uppercase)
 import pytest
 # переворачиваем строку
 def test_reverse_string():
@@ -534,3 +534,48 @@ def test_calculate_tax(item, expected_result):
             calculate_tax(item)
     else:
         assert calculate_tax(item) == expected_result
+
+    # ПОВТОРЕНИЕ
+def test_count_vowels_practice():
+    assert count_vowels_practice("Привет") == 2
+    assert count_vowels_practice("Солнце Ясное") == 5
+    assert count_vowels_practice("") == 0
+    assert count_vowels_practice("БРРРР") == 0
+    assert count_vowels_practice("УЗИ") == 2
+def test_reverse_text_practice():
+    assert reverse_text_practice("Привет") == "тевирП"
+    assert reverse_text_practice("топот") == "топот"
+    assert reverse_text_practice("N") == "N"
+    assert reverse_text_practice("") == ""
+def test_normalize_text_practice():
+    assert normalize_text_practice(" ПРивет  ") == "привет"
+    assert normalize_text_practice("     p ") =="p"
+    assert normalize_text_practice("   ")==""
+def test_count_words_practice():
+    assert count_words_practice("Привет, как дела?") == 3
+    assert count_words_practice("  Один  Два три  ") == 3
+    assert count_words_practice("") == 0
+def test_is_title_case():
+    assert is_title_case("Привет, мир!") == True
+    assert is_title_case("   привет") == False
+    assert is_title_case("123") == False
+    assert is_title_case("") == False
+
+def test_count_unique_words_practice():
+    assert count_unique_words_practice("Привет привет Привет") == 1  
+    assert count_unique_words_practice("QA is great and QA is fun") == 5  
+    assert count_unique_words_practice("  Один  два три три  ") == 3  
+    assert count_unique_words_practice("") == 0
+
+def test_contains_only_letters_practice():
+    assert contains_only_letters_practice("Ksenia") == True
+    assert contains_only_letters_practice("Ксения") == True
+    assert contains_only_letters_practice("Ksenia13243") == False
+    assert contains_only_letters_practice("   QA ") == False
+    assert contains_only_letters_practice("") == False
+
+def test_count_uppercase():
+    assert count_uppercase("Привет Мир!") == 2
+    assert count_uppercase("HELLO") == 5
+    assert count_uppercase("hello") == 0
+    assert count_uppercase("") == 0

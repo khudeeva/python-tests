@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -238,3 +238,46 @@ def test_multiply(numbers):
     a, b = numbers
     assert a * b == 18
 
+# ПОВТОРЕНИЕ
+def test_is_even_practice():
+    assert is_even_practice(4) == True
+    assert is_even_practice(7) == False
+    assert is_even_practice(0) == True
+    assert is_even_practice(-2) == True
+    assert is_even_practice(-11)== False
+
+def test_is_divisible_practice():
+    assert is_divisible_practice(10, 2) == True
+    assert is_divisible_practice(7, 3) == False
+    assert is_divisible_practice(5, 0) == False
+    assert is_divisible_practice(0, 5) == True
+    assert is_divisible_practice(12, 6) == True
+
+def test_get_max():
+    assert get_max(5, 10) == 10
+    assert get_max(7, 3) == 7
+    assert get_max(-1, -5) == -1
+    assert get_max(0, 0) == 0
+
+def test_sum_list():
+    assert sum_list([1, 2, 3]) == 6
+    assert sum_list([0, -5, 10]) == 5
+    assert sum_list([]) == 0
+
+def test_average_practice():
+    assert average_practice([2, 4, 6]) == 4.0
+    assert average_practice([10]) == 10.0
+    assert average_practice([-2, -4, -6]) == -4.0
+    assert average_practice([]) == 0
+
+def test_multiply_list_practice():
+    assert multiply_list_practice([1, 2, 3, 4]) == 24
+    assert multiply_list_practice([10]) == 10
+    assert multiply_list_practice([]) == 1
+    assert multiply_list_practice([5, 0, 7]) == 0
+
+def test_find_min_max():
+    assert find_min_max([1, 5, 3, 0]) == (0, 5)
+    assert find_min_max([-10, -5, 0]) == (-10, 0)
+    assert find_min_max([7]) == (7, 7)
+    assert find_min_max([]) == None
