@@ -106,3 +106,52 @@ def person_details(name, *hobbies, **info):
         print(f"{key} : {value}")
 
 person_details("Ksenia", "Reading", "Travelling", age=25, city="Perm")
+
+# ПОВТОРЕНИЕ
+def add_all(*numbers):
+    return sum(numbers)
+
+def max_from_args(*numbers):
+    if not numbers:
+        return None
+    return max(numbers)
+
+def count_positives(*numbers):
+    return sum(1 for number in numbers if number > 0)
+
+def greet_user_kwargs(**kwargs):
+    if "name" in kwargs and "age" in kwargs:
+        return f"Привет, {kwargs['name']}! Тебе {kwargs['age']} лет."
+    else:
+        return "Недостаточно данных"
+   
+def is_qa_user(**kwargs):
+    if "is_qa" in kwargs and kwargs['is_qa'] == True:
+        return "Пользователь - QA"
+    else:
+        return" Не QA"
+   
+def describe_user(**kwargs):
+    if "name" in kwargs and "city" in kwargs and "is_active" in kwargs:
+        return f"Пользователь {kwargs['name']} из {kwargs['city']}. Активен: {kwargs['is_active']}"
+    else:
+        return "Недостаточно информации"
+    
+def user_summary(name, *skills, **info):
+    skill_str = ",".join(skills) if skills else "ничего"
+    city = info.get("city", "неизвестно")
+    experience = info.get("experience", "не указано")
+    return f"Пользователь {name} знает: {skill_str}. Дополнительно: город - {city}, опыт -  {experience} года"
+
+def summarize_person(name, *skills, **details):
+    skill = ",".join(skills) if skills else "ничего"
+    city = details.get("city", "неизвестно")
+    age = details.get("age", "неизвестно")
+    is_active = details.get("is_active", "неизвестно")
+    return f"Имя: {name}. Навыки: {skill}. Детали: город - {city}, возраст - {age}, активен - {is_active}"
+
+def profile_summary(name, *interests, **meta):
+    interest = ",".join(interests) if interests else "не указано"
+    country = meta.get("country", "не указано")
+    verified = meta.get("verified", "не указано")
+    return f"Имя: {name}. Интересы: {interest}. Детали: страна -  {country}, верифицирован - {verified}"

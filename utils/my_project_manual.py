@@ -47,7 +47,7 @@ from dict_utils import (
     find_only_class, find_repeated_names, find_repeated_roles,
     find_unique_roles, find_users_with_unique_roles,
     find_unique_vegan_dishes, find_all_keys, find_inactive_users,
-    find_unique_role_today, update_dict
+    find_unique_role_today, update_dict, dict_summary, get_skills, get_task_count, knows_python, top_user, all_skills, has_tasks
 )
 
 # ✨ Импортируем функции с *args, **kwargs, фильтрацией по типам
@@ -55,7 +55,7 @@ from flex_utils import (
     multiply_all, user_profile, sum_all, car_info, total_sum,
     filter_strings, filter_numbers_kwargs, count_strings,
     summarize_and_collect_strings, find_booleans, count_booleans,
-    person_details, calculate_stats
+    person_details, calculate_stats, add_all, max_from_args, count_positives, greet_user_kwargs, is_qa_user, describe_user, user_summary, summarize_person, profile_summary
 )
 
 print(multiply(3, 7))  # 21
@@ -311,6 +311,43 @@ print(filter_unique([1, 2, 2, 3, 4, 4, 5]))
 
 # добавляем ключи в словарь
 print(update_dict({"name": "Иван", "age": 30}))
+
+# возвращаем строку из словаря
+print(dict_summary({"name": "Ksenia", "age": 25}))
+
+print("\n get_skills")
+print(get_skills("ksenia"))
+print(get_skills("anna"))
+
+print("\n get_task_count")
+print(get_task_count("ksenia"))
+print(get_task_count("lena"))
+
+print("\n know_python")
+print(knows_python("ksenia"))
+print(knows_python("lena"))
+
+print("\n top_users")
+# словарь передаем извне
+tasks_data = { 
+    "ksenia": 5,
+    "dima": 3,
+    "lena": 7
+}
+print(top_user(tasks_data))
+
+print("\n all_skills")
+print(all_skills({
+    "ksenia": ["Python", "SQL"],
+    "dima": ["HTML", "CSS", "SQL"],
+    "anna": ["Python", "Postman"]
+}))
+
+print("\n has_tasks")
+print(has_tasks("dima"))   
+print(has_tasks("anna"))   
+print(has_tasks("oleg"))   
+
 
 # проверяем поиск только уникальных слов
 print(find_unique_words("Я люблю Python. Python - это круто!"))
@@ -611,6 +648,45 @@ print("\n multiply_all") # перемножаем все переданные ч
 print(multiply_all(2, 3, 4))
 print(multiply_all(11, 5))
 
+print("\n add_all") # возвращаем сумму всех переданных чисел
+print(add_all(1, 2, 3))
+print(add_all(10, 5))
+print(add_all(0, 0))
+print(add_all(-10, -20))
+
+print("\n max_from_args")
+print(max_from_args(3, 5, 1))
+print(max_from_args(10))
+print(max_from_args(-10))
+print(max_from_args())
+
+print("\n count_positives")
+print(count_positives(1, -2, 3, -4, 0))
+print(count_positives(-1, -2))
+print(count_positives())
+
+print("\n greet_user_kwargs")
+print(greet_user_kwargs(name = "Ksenia", age = 25))
+print(greet_user_kwargs(name="Dima"))
+print(greet_user_kwargs())
+
+print("\n is_qa_user")
+print(is_qa_user(name = "Ksenia", is_qa = True))
+print(is_qa_user(name="Dima", is_qa = False))
+print(is_qa_user(name="Anna"))
+
+print("\n describe_user")
+print(describe_user(name="Ksenia", city="Perm", is_active = True))
+print(describe_user(name = "Dima", is_active = False))
+
+print("\n user_summary")
+print(user_summary("Ksenia", "Python", "SQL", city = "Perm", experience = 2))
+
+print("\n summarize_person")
+print(summarize_person("Ksenia", "Python", "SQL", city = "Perm", age = 25, is_active = True))
+
+print("\n profile_summary")
+print(profile_summary("Ksenia", "Fitness", "Dance", country = "Russia", verified = True))
 # ПОВТОРЕНИЕ
 print(greet_user("Max"))
 

@@ -232,3 +232,53 @@ def update_dict(user_data):
         return "Ошибка: не словарь"
     user_data["status"] = "active"
     return user_data
+
+def dict_summary(user_dict):
+    user_dict = {
+        "name": "Ksenia",
+        "age": 25
+    }
+    name = user_dict.get("name")
+    age = user_dict.get("age")
+    return f"user {name}, age {age}"
+
+def get_skills(username):
+    users= {
+        "ksenia": ["Python", "SQL"],
+        "dima": ["Java", "HTML"],
+        "lena": ["C++", "Python"]
+    }
+    return users.get(username, [])
+
+def get_task_count(name):
+    tasks = {
+        "ksenia": 5,
+        "dima": 3,
+        "anna": 1    
+        }
+    return tasks.get(name, 0 )
+
+def knows_python(name):
+    skills = {
+    "ksenia": ["Python", "SQL"],
+    "dima": ["HTML", "CSS"],
+    "anna": ["Python", "Postman"]
+}
+    return "Python" in skills.get(name, [])
+
+def top_user(tasks):
+    return max(tasks, key=tasks.get)
+
+def all_skills(skills):
+    unique_skills = set()
+    for skill_list in skills.values():
+      unique_skills.update(skill_list)
+    return list(unique_skills)
+
+def has_tasks(name):
+    users = {
+    "ksenia": 3,
+    "dima": 5,
+    "anna": 2
+}
+    return users.get(name, 0) > 0
