@@ -244,6 +244,22 @@ langs.append("CSS")
 langs.remove("SQL")
 print(langs)
 
+print("\n five_cities")
+five_cities = ["Perm", "Moscow", "Kazan", "Sochi", "Ekaterinburg"]
+print(five_cities[0])
+print(five_cities[4])
+five_cities.append("Kaluga")
+print("Moscow" in five_cities)
+print(five_cities)
+
+print("\n qa_list")
+qa_list = ["Postman", "Selenium", "Allure"]
+qa_list.append("JMeter")
+qa_list.insert(1,"Pytest")
+qa_list.remove("Allure")
+print(qa_list)
+
+
 # словарь(dict)
 print("user")
 user ={
@@ -285,6 +301,158 @@ del user_data["age"]
 print(user_data["skills"])
 print(user_data)
 
+print("\n my_profile")
+my_profile = {
+    "name": "Ksenia",
+    "age": 25,
+    "city": "Perm"
+}
+my_profile["city"] = "Ekaterinburg"
+my_profile["is_qa"] = True
+del my_profile["age"]
+print(my_profile)
+
+print("\n bug_info")
+bug_info = {
+    "id": "BUG-789",
+    "status": "Open",
+    "priority": "High"
+}
+bug_info["status"] = "Closed"
+print(bug_info.keys())
+print(bug_info.values())
+print (bug_info)
+
+# dict + list
+print("\n personal_skills")
+personal_skills = {
+        "ksenia": ["Python", "SQL", "Selenium"],
+        "dima": ["HTML", "CSS"],
+        "anna": ["Postman", "Python"]
+    }
+    # выводим список всех пользователей
+print(personal_skills.keys())
+    # для каждого пользователя - выводим количество навыков
+for name, skills in personal_skills.items():
+    print(f"{name} знает: {len(skills)} навыков")
+    # проверка, есть ли у кого-то навык Selenium, если есть - выводим имя
+for name, skills in personal_skills.items():
+    if "Selenium" in skills:
+        print(f"{name} знает Selenium")
+
+    # добавляем нового пользователя с новыми навыками
+personal_skills["lena"] =  ["Java", "PostgreSQL"]
+print(personal_skills)
+    # удалим у "dima" навык "HTML"
+if "HTML" in personal_skills["dima"]:
+    personal_skills["dima"].remove("HTML")
+    # выводим итоговый словарь
+for name, skills in personal_skills.items():
+    print(f"{name}: {skills}")
+
+    # dict+list
+print("\n qa_tasks")
+qa_tasks = {
+         "ksenia": ["login test", "form check"],
+        "dima": ["API response", "button visibility"],
+        "anna": ["page load", "layout check"]
+    }
+print(qa_tasks.keys())
+for name, tasks in qa_tasks.items():
+        print(f"{name} имеет: {len(tasks)} задач")
+qa_tasks["lena"] = ["registration test"]
+print(qa_tasks)
+
+if "form check" in qa_tasks["ksenia"]:
+        qa_tasks["ksenia"].remove("form check")
+        print(qa_tasks)
+for name, tasks in qa_tasks.items():
+        print(f"{name}: {tasks}")
+
+print("\n tasks")
+tasks = {
+    "ksenia": ["login test", "form check"],
+    "dima": ["API response", "button visibility", "form check"],
+    "anna": ["page load", "layout check", "form check"]
+}
+for name, task in tasks.items():
+    if "form check" in task:
+        print(f"{name} имеет задачу form check")
+
+# ищем QA с максимальным количеством задач
+max_user = ""
+max_tasks = 0
+for name, task in tasks.items():
+    if len(task) > max_tasks:
+        max_tasks = len(task)
+        max_user = name
+print(f"Больше всего задач у {max_user}: {tasks[max_user]}")
+
+# удаляем form check  у всех, у кого она есть
+for name, task in tasks.items():
+    if "form check" in task:
+        task.remove("form check")
+      
+for name, task in tasks.items():
+      print(f"{name}: {task}")
+
+# set
+print("\n my_skills")
+my_skills = {"Python", "SQL", "API", "Selenium", "Python", "SQL"}
+print(set(my_skills))
+
+print("\n names")
+names = ["Ksenia", "Dima", "Anna", "Ksenia", "Anna"]
+print(set(names))
+
+print("\n total_skills, Общие навыки")
+skills_ksenia = {"Python", "SQL", "API", "Postman"}
+skills_dima = {"Java", "API", "SQL"}
+set1 = set(skills_ksenia)
+set2 = set(skills_dima)
+print("Общие навыки:", set1&set2)
+print("Навыки только у Ксении:", set1-set2)
+
+print("\n Проверка наличия + add")
+cities = {"Perm", "Moscow", "Kazan", "Sochi"}
+if "Berlin" not in cities:
+    cities.add("Berlin")
+print(cities)
+
+print("\n Подсчет уникальных букв")
+word = "Автоматизация"
+print(len(set(word)))
+
+print("\n Проверка пересечений")
+errors_qa = {"UI баг", "Кнопка не работает", "Орфография"}
+errors_dev = {"500 ошибка", "Кнопка не работает", "Неверная логика"}
+set1 = set(errors_qa)
+set2 = set(errors_dev)
+print("Общие ошибки:", set1&set2)
+print("Ошибки только у QA", set1-set2)
+
+print("\n Обновление навыков")
+skills = {"Python", "SQL"}
+if not "Postman" in skills:
+    skills.add("Postman")
+if "SQL" in skills:
+    skills.discard("SQL")
+print("Сотрудник имеет навыки:", skills)
+
+print("\n qa_language")
+qa_language = set()
+qa_language.add("Python")
+qa_language.add("Postman")
+qa_language.add("Selenium")
+qa_language.discard("Postman")
+if "JMeter" in qa_language:
+    print("Есть JMeter")
+else:
+    print("JMeter отсутствует")
+print(qa_language)
+
+
+
 print("Условные конструкции if/else")
 age = 21
 is_qa = True
@@ -319,3 +487,88 @@ for lang in langs:
     print(lang)
 print(len(langs))
 print("JavaScript"in langs)
+
+# обработка ошибок(try/except)
+a = 10
+b = 0
+try:
+    x = a / b
+    print(f"Результат: {x}")
+except ZeroDivisionError:
+    print("Ошибка: деление на ноль!")
+
+print("\n Обработка ошибки по наличию ключа")
+user = {
+    "name": "Ksenia",
+    "city": "Perm"
+}
+try:
+        print(f"Возраст пользователя: {user['age']}")
+except KeyError:
+    print("Ключ 'age' не найден")
+
+# кортеж(tuple)
+print("\n Создаем доступ к элементам")
+prof_name = ("Marina", 28, "QA")
+print(prof_name[0])
+print(prof_name[2])
+print(len(prof_name))
+
+print("\n Проверка наличия значений в кортеже")
+qa_stack = ("Python", "Selenium", "PyTest", "Postman", "SQL")
+print("Selenium" in qa_stack)
+print("Postman" in qa_stack)
+print(qa_stack.index("Postman"))
+print(qa_stack.count("Python"))
+
+print("\n Обработка ошибок с .index()")
+tools = ("Postman", "JMeter", "Selenium", "Allure")
+tool_to_check = "Pytest"
+try:
+    index = tools.index(tool_to_check)
+    print(f"Инструмент найденю Индекс: {index}")
+except ValueError:
+    print("Инструмент не найден")
+
+print("\n Обработка ошибок finally")
+num1 = "abc"
+num2 = 0
+try:
+    x = int(num1) # тут ошибка, идет сразу в except
+    y = 10 / num2 # поэтому это не выполянется!
+except ValueError:
+    print("Ошибка преобразования")
+except ZeroDivisionError:
+    print("Ошибка деления на ноль")
+finally:
+    print("Завершено")
+
+print("\n Работа с файлом и try/except/else/finally")
+file_name = "testdata.txt"
+try:
+    f = open(file_name, "r")
+    line = f.readline()
+except FileNotFoundError:
+    print("Файл не найден")
+else:
+    print("Строка содержит:", line)
+finally:
+   print("Завершено")
+
+print("\n Кортеж о баге")
+bug_info = ("BUG-123", "Open", "Critical")
+print(bug_info[1])
+print(bug_info[2])
+
+print("\n try/except")
+number = "10a"
+divisor = 0
+try:
+    x = int(number)
+    y = 100/divisor
+except ValueError:
+    print("Ошибка преобразования")
+except ZeroDivisionError:
+    print("Ошибка деления на ноль")
+finally:
+    print("Проверка завершена")

@@ -693,3 +693,4 @@ print(greet_user("Max"))
 print(count_vowels_practice("Привет"))
 print(count_vowels_practice("Солнце ясное"))
 
+
