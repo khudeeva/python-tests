@@ -618,3 +618,38 @@ qa_tasks[0] = "обновить документацию"
 
 for index, task in enumerate(qa_tasks, start=1):
     print(f"{index}. {task}")
+
+print("\n QA and Dev")
+qa_stack = {"Python", "Postman", "Selenium", "SQL"}
+dev_stack = {"Python", "Docker", "Kubernetes", "SQL"}
+set1 = set(qa_stack)
+set2 = dev_stack
+print("Общие навыки:", set1&set2)
+print("Технологии обеих ролей:", set1|set2)
+print("Уникальные навыки QA:", set1 - set2)
+print("Docker" in qa_stack)
+
+a = {1, 2, 3}
+b = {3, 4, 5}
+print(a)
+print("Общие элементы:", a & b)
+print("Уникальные элементы:", a|b)
+
+qa_tasks2 = ["тест-кейс", "баг", "автотест"]
+qa_tasks2.append("API")
+qa_tasks2.insert(1,"документация") # ставим на 1 место
+qa_tasks2.extend(["Git", "CI/CD"]) # add сразу 2элемента
+qa_tasks2.remove("баг")
+for index, task in enumerate(qa_tasks2, start=1): 
+    print(f"{index}. {task}")
+
+bug_info = {
+    "id": "BUG-123",
+    "status": "open",
+    "severity": "critical"
+}
+bug_info["status"] = "closed"
+del bug_info["severity"]
+bug_info.get("description")
+for key, value in bug_info.items():
+    print(f"{key}: {value}")
