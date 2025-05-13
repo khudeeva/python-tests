@@ -468,7 +468,30 @@ def contains_only_letters_practice(text):
 # считаем количество заглавных букв в строке
 def count_uppercase(text):
     return sum(1 for letter in text if letter.isupper())
-    
+
+@pytest.fixture
+def user_data_fixture():
+    return {"name": "Марина", "role": "QA", "age": 25}
+
+@pytest.fixture
+def qa_skills():
+    return ["Postman", "PyTest", "Selenium", "SQL"]
+
+@pytest.fixture(scope="module")
+def project_info():
+    return {"project": "Autotest", "version": 1.0}
      
 
+
+def check_user_role(role, valid_roles):
+    if role in valid_roles:
+        return "OK"
+    else:
+        raise ValueError("Недопустимая роль")
+    
+def validate_age(age, min_age):
+    if age >= min_age:
+        return "Допущен"
+    else:
+        raise ValueError("Слишком молодой")
     

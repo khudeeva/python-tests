@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -281,3 +281,84 @@ def test_find_min_max():
     assert find_min_max([-10, -5, 0]) == (-10, 0)
     assert find_min_max([7]) == (7, 7)
     assert find_min_max([]) == None
+
+# ПОВТОРЕНИЕ
+@pytest.mark.parametrize("a, b, expected", [
+    (10, 2, 5),
+    (9, 3, 3),
+    (8, 4, 2),
+])
+def test_divide(a, b, expected):
+    assert divide(a, b) == expected
+
+@pytest.mark.parametrize("n, expected", [
+    (2, 4),
+    (3, 9), 
+    (5, 25)
+])
+def test_square(n, expected):
+    assert square(n) == expected
+
+@pytest.mark.parametrize("a, b, expected", [
+    (2, 3, 5),
+    (4, 0, 4),
+    (-1, -2, -3)
+])
+def test_add(a, b, expected):
+    assert add(a, b) == expected 
+
+@pytest.mark.parametrize("a, b, expected", [
+    (10, 9, "greater"),
+    (-1, -3, "greater"),
+    (1, 2, "less"),
+    (-10, -5, "less"),
+    (4, 4, "equal")
+])
+def test_compare_number(a, b, expected):
+    assert compare_number(a, b) == expected
+
+@pytest.mark.parametrize("a, b, expected, expect_error",[
+    (10, 5, 2, False),
+    (6, 3, 2, False),
+    (5, 0, None, True)
+])
+def test_divide_with_raise(a, b, expected, expect_error):
+    if expect_error:
+        with pytest.raises(ValueError):
+            divide_with_raise(a, b)
+    else:
+        assert divide_with_raise(a, b) == expected
+
+def test_safe_int():
+    value = "abc"
+    with pytest.raises(ValueError):
+        safe_int(value)
+
+def test_safe_divide_zero():
+    a = 10
+    b = 0
+    with pytest.raises(ZeroDivisionError):
+        safe_divide_zero(a, b)
+
+def test_parse_not_int_list():
+    lst = ["1", "2", "abc", "4"]
+    with pytest.raises(ValueError):
+        parse_int_list(lst)
+
+def test_parse_int_list():
+    lst = ["1", "2", "3", "4"]
+    assert parse_int_list(lst)
+
+@pytest.mark.parametrize("a, b, expected, expect_error",[
+    (10, 2, 5, False),
+    (9, 3, 3, False),
+    (5, 0, None, True)
+])
+def test_divide_raise(a, b, expected, expect_error):
+    if expect_error:
+        with pytest.raises(ZeroDivisionError):
+            divide_raise(a, b)
+    else:
+        assert divide_raise(a, b) == expected
+
+    

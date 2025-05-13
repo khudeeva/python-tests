@@ -572,3 +572,49 @@ except ZeroDivisionError:
     print("Ошибка деления на ноль")
 finally:
     print("Проверка завершена")
+
+print("\n qa_stack")
+qa_stack = {"Postman", "Selenium", "Postman", "SQL"}
+print(qa_stack)
+
+print("\n qa_stack_2")
+qa_stack2 = set()
+qa_stack2.add("Postman")
+qa_stack2.add("Selenium")
+qa_stack2.add("Postman")
+qa_stack2.add("SQL")
+
+qa_stack2.discard("Postman")
+print("JMeter" in qa_stack2)
+print("Итоговое множество:", qa_stack2)
+
+print("\n info_of_bug")
+info_of_bug = {
+"id": "BUG-101",
+"status": "open",
+"priority": "high"
+}
+info_of_bug["status"] = "closed"
+del info_of_bug["priority"]
+print(info_of_bug.get("description"))
+print(info_of_bug.keys())
+print(info_of_bug.values())
+print(info_of_bug)
+
+print("\n qa_user_profile")
+qa_user_profile = {
+    "name": "Марина",
+    "role": "QA",
+    "location": "Казань"
+}
+for key, value in qa_user_profile.items():
+    print(f"{key.capitalize()} : {value}")
+
+print("\n qa_tasks")
+qa_tasks = ["написать тест-кейс", "завести баг", "написать автотест"]
+qa_tasks.append("проверить API")
+qa_tasks.remove("завести баг")
+qa_tasks[0] = "обновить документацию"
+
+for index, task in enumerate(qa_tasks, start=1):
+    print(f"{index}. {task}")

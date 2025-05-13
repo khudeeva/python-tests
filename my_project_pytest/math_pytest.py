@@ -187,5 +187,51 @@ def find_min_max(numbers):
         return None
     return (min(numbers), max(numbers))
 
+# ПОВТОРЕНИЕ
+def divide(a, b):
+    return a / b
 
+def square(n):
+    return n * n
+
+def add(a, b):
+    return a + b
+
+
+
+def compare_number(a, b):
+    if a > b:
+        return "greater"
+    elif a < b:
+        return "less"
+    else:
+        return "equal"
+
+def divide_with_raise(a, b):
+    if b == 0:
+        raise ValueError("Деление на ноль запрещено")
+    return a / b
+
+# Проверка исключений (with pytest.raises)
+def safe_int(value):
+    return int(value)
+    
+def safe_divide_zero(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Деление на ноль запрещено")
+    return a / b
+
+def parse_int_list(lst):
+    result = []
+    for x in lst:
+        try:
+            result.append(int(x))
+        except ValueError:
+            raise ValueError("Невозможно преобразовать список в числа")
+    return result
+
+    
+def divide_raise(a, b):
+    return a/b
+    
 

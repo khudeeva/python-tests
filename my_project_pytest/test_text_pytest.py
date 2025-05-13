@@ -1,4 +1,4 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax,count_vowels_practice, reverse_text_practice, normalize_text_practice,count_words_practice, is_title_case, count_unique_words_practice, contains_only_letters_practice, count_uppercase)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax,count_vowels_practice, reverse_text_practice, normalize_text_practice,count_words_practice, is_title_case, count_unique_words_practice, contains_only_letters_practice, count_uppercase, user_data_fixture, qa_skills, project_info, check_user_role, validate_age)
 import pytest
 # переворачиваем строку
 def test_reverse_string():
@@ -579,3 +579,63 @@ def test_count_uppercase():
     assert count_uppercase("HELLO") == 5
     assert count_uppercase("hello") == 0
     assert count_uppercase("") == 0
+
+def test_user_data_fixture(user_data_fixture):
+    assert user_data_fixture["name"] == "Марина"
+    assert user_data_fixture["role"] == "QA"
+    assert user_data_fixture["age"] >= 18
+
+def test_qa_skills(qa_skills):
+    assert "Selenium" in qa_skills
+    assert len(qa_skills) == 4
+    assert qa_skills 
+
+def test_project_info(project_info):
+    assert project_info["project"] == "Autotest"
+    assert isinstance(project_info["version"], float)
+    assert project_info["version"] > 0
+
+# @pytest.fixture(autouse=True)
+# def show_test_start():
+#     print("\n Тест начинается...")
+# def test_something():
+#     assert 1 + 1 ==2
+
+@pytest.fixture
+def open_and_close():
+    print("Open соединение")
+    yield "соединение"
+    print("Close соединение")
+def test_connection(open_and_close):
+    assert True
+
+@pytest.fixture
+def valid_roles():
+    return ["QA", "Dev", "PM"]
+@pytest.mark.parametrize("role, expect_error", [
+    ("QA", False),
+    ("Dev", False),
+    ("Designer", True)
+])
+def test_check_user_role(role, expect_error, valid_roles):
+    if expect_error:
+        with pytest.raises(ValueError):
+            check_user_role(role, valid_roles)
+    else:
+        assert check_user_role(role, valid_roles) == "OK"
+
+@pytest.fixture
+def min_age():
+    return 18
+@pytest.mark.parametrize("age, error_age", [
+    (20, False),
+    (18, False),
+    (17, True)
+])
+def test_validate_age(age, error_age, min_age):
+    if error_age:
+        with pytest.raises(ValueError):
+            validate_age(age, min_age)
+    else:
+        assert validate_age(age, min_age) == "Допущен"
+
