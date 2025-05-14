@@ -653,3 +653,30 @@ del bug_info["severity"]
 bug_info.get("description")
 for key, value in bug_info.items():
     print(f"{key}: {value}")
+
+qa_stack_practice = ["Postman", "Selenium", "Postman", "SQL", "Python", "Selenium"]
+new_set = set(qa_stack_practice)
+new_set.add("Pytest")
+new_set.discard("Postman")
+if "SQL" in new_set:
+    print("Yes")
+print(new_set)
+
+bug_info_practice = {
+     "id": "BUG-001",
+    "status": "Open",
+    "severity": "High"
+}
+bug_info_practice["status"] = "Closed"
+del bug_info_practice["severity"]
+bug_info_practice.get("description")
+for key, value in bug_info_practice.items():
+    print(f"{key} : {value}")
+print(bug_info_practice)
+
+qa_tasks_practice = ["написать тест-кейс", "проверить баг", "настроить тест"]
+qa_tasks_practice.append("обновить документацию")
+qa_tasks_practice.remove("проверить баг")
+qa_tasks_practice.insert(2, "оформить отчет")
+for index, task in enumerate(qa_tasks_practice, start = 1):
+    print(f"{index}. {task}")

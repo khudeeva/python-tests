@@ -111,6 +111,9 @@ person_details("Ksenia", "Reading", "Travelling", age=25, city="Perm")
 def add_all(*numbers):
     return sum(numbers)
 
+def multiply_all(*numbers):
+    return prod(numbers)
+
 def max_from_args(*numbers):
     if not numbers:
         return None
@@ -124,6 +127,10 @@ def greet_user_kwargs(**kwargs):
         return f"Привет, {kwargs['name']}! Тебе {kwargs['age']} лет."
     else:
         return "Недостаточно данных"
+    
+def describe_person(**kwargs):
+    if "name" in kwargs and "age" in kwargs and "role" in kwargs:
+        return f"Имя: {kwargs['name']}, Возраст: {kwargs['age']}, Роль: {kwargs['role']}"
    
 def is_qa_user(**kwargs):
     if "is_qa" in kwargs and kwargs['is_qa'] == True:

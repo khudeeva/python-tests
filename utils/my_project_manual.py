@@ -55,7 +55,7 @@ from flex_utils import (
     multiply_all, user_profile, sum_all, car_info, total_sum,
     filter_strings, filter_numbers_kwargs, count_strings,
     summarize_and_collect_strings, find_booleans, count_booleans,
-    person_details, calculate_stats, add_all, max_from_args, count_positives, greet_user_kwargs, is_qa_user, describe_user, user_summary, summarize_person, profile_summary
+    person_details, calculate_stats, add_all, max_from_args, count_positives, greet_user_kwargs, is_qa_user, describe_user, user_summary, summarize_person, profile_summary, multiply_all, describe_person
 )
 
 print(multiply(3, 7))  # 21
@@ -693,4 +693,8 @@ print(greet_user("Max"))
 print(count_vowels_practice("Привет"))
 print(count_vowels_practice("Солнце ясное"))
 
+print(multiply_all(2, 3, 4))   
+print(multiply_all(1, 5))     
+print(multiply_all())       
 
+print(describe_person(name = "Марина", age = 26, role='QA'))
