@@ -495,3 +495,21 @@ def validate_age(age, min_age):
     else:
         raise ValueError("Слишком молодой")
     
+def get_items_out_of_range(my_list, index):
+    return my_list[index]
+
+def convert_to_int(value):
+    return int(value)
+
+def add_numbers(a, b):
+    return a + b
+
+def divide_numbers(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Деление на ноль запрещено")
+    return a / b
+
+def check_temperature(value):
+    if value < -300:
+        raise ValueError("Температура ниже абсолютного нуля!")
+    return value
