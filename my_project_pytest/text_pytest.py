@@ -513,3 +513,14 @@ def check_temperature(value):
     if value < -300:
         raise ValueError("Температура ниже абсолютного нуля!")
     return value
+
+def capitalize_words(text):
+    return " ".join(word.capitalize() for word in text.split())
+print(capitalize_words("python is fun")) 
+    
+    
+
+@pytest.fixture
+def user_name_text():
+    return "Ksenia"
+

@@ -680,3 +680,32 @@ qa_tasks_practice.remove("проверить баг")
 qa_tasks_practice.insert(2, "оформить отчет")
 for index, task in enumerate(qa_tasks_practice, start = 1):
     print(f"{index}. {task}")
+
+print("\n unique_sorted_list")
+unique_sorted_list = [1, 2, 3, 3, 4, 5, 5, 6]
+print(sorted(set(unique_sorted_list)))
+
+print("\n user_test")
+user_test = {"name": "Ksenia", "city": "Perm"}
+user_test["age"] = 25
+print(f"{user_test["name"]}, {user_test["age"]} лет, город {(user_test["city"])}")
+
+print("\n Операции множества:")
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+print("Только общие элементы:", a & b)
+print("Элементы только в a:", a - b)
+print("Элементы только в a или только в b", a ^ b)
+
+print("\n age_users")
+age_users = {
+    "Ксения": 25,
+    "Анна": 30,
+    "Иван": 21,
+    "Олег": 28
+}
+for key, value in age_users.items():
+    if value < 26:
+        print(f"{key}: {value} лет (младше 26)")
+    else:
+        print(f"{key} : {value} лет")

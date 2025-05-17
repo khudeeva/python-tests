@@ -162,3 +162,9 @@ def profile_summary(name, *interests, **meta):
     country = meta.get("country", "не указано")
     verified = meta.get("verified", "не указано")
     return f"Имя: {name}. Интересы: {interest}. Детали: страна -  {country}, верифицирован - {verified}"
+
+def describe_person_ksenia(name, *hobbies, **info):
+    hobbie = ",".join(hobbies) if hobbies else "не указнано"
+    age = info.get("age", "не указано")
+    city = info.get("city", "не указано")
+    return f"Имя: {name}. Возраст: {age}. Город: {city}. Хобби: {hobbie}"

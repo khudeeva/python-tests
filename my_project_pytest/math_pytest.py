@@ -235,3 +235,9 @@ def divide_raise(a, b):
     return a/b
     
 
+def double(x):
+    return x ** 2
+@pytest.fixture
+def user_name_double():
+    return "Ksenia"
+

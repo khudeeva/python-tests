@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise, double, user_name_double)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -360,5 +360,14 @@ def test_divide_raise(a, b, expected, expect_error):
             divide_raise(a, b)
     else:
         assert divide_raise(a, b) == expected
+
+@pytest.mark.parametrize("x, expected", [
+    (2, 4),
+    (5, 25),
+    (10, 100)
+    ])
+def test_double(x, expected, user_name_double):
+    assert double(x) == expected
+    print(f"{user_name_double} возводит {x} в степень")
 
     
