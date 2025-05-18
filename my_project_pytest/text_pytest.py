@@ -518,9 +518,5 @@ def capitalize_words(text):
     return " ".join(word.capitalize() for word in text.split())
 print(capitalize_words("python is fun")) 
     
-    
-
-@pytest.fixture
-def user_name_text():
-    return "Ksenia"
-
+def is_name_valid(name, max_length):
+    return len(name) <= max_length

@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise, double, user_name_double)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise, double, is_even_example, is_even_save, divide_with_error, safe_divide)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -361,6 +361,9 @@ def test_divide_raise(a, b, expected, expect_error):
     else:
         assert divide_raise(a, b) == expected
 
+@pytest.fixture
+def user_name_double():
+    return "Ksenia"
 @pytest.mark.parametrize("x, expected", [
     (2, 4),
     (5, 25),
@@ -370,4 +373,56 @@ def test_double(x, expected, user_name_double):
     assert double(x) == expected
     print(f"{user_name_double} возводит {x} в степень")
 
+@pytest.mark.parametrize("num, expected", [
+    (2, True),
+    (5, False),
+    (10, True),
+    (13, False)
+]) 
+def test_is_even_example(num, expected):
+    assert is_even_example(num) == expected
+
+@pytest.mark.parametrize("num, expected, expect_error", [
+    (2, True, False),
+    (3, False, False),
+    ("4", None, True),
+    (None, None, True),
+    ([], None, True)
+])
+def test_is_even_save(num, expected, expect_error):
+    if expect_error:
+        with pytest.raises(TypeError):
+            is_even_save(num)
+    else:
+        assert is_even_save(num) == expected
+
+@pytest.mark.parametrize("a, b, expected, expect_error", [
+    (6, 2, 3, False),
+    (5, 0, None, True),
+    (2, 2, 1, False)
+])
+def test_divide_with_error(a, b, expected, expect_error):
+    if expect_error:
+        with pytest.raises(ZeroDivisionError):
+            divide_with_error(a, b)
+    else:
+        assert divide_with_error(a, b) == expected
     
+
+@pytest.mark.parametrize("a, b, expected, error_type", [
+    (10, 2, 5.0, None),
+    (8, 0, None, "zero"),
+    (-2, 2, None, "value"),
+    (6, 3, 2.0, None)
+])
+def test_safe_divide(a, b, expected, error_type):
+    if error_type == "zero":
+        with pytest.raises(ZeroDivisionError) as exc:
+            safe_divide(a, b)
+        assert "на 0" in str(exc.value)
+    elif error_type == "value":
+        with pytest.raises(ValueError) as exc:
+            safe_divide(a, b)
+        assert "положительными" in str(exc.value)
+    else:
+        assert safe_divide(a, b) == expected

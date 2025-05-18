@@ -234,10 +234,25 @@ def parse_int_list(lst):
 def divide_raise(a, b):
     return a/b
     
-
 def double(x):
     return x ** 2
-@pytest.fixture
-def user_name_double():
-    return "Ksenia"
 
+def is_even_example(num):
+    return num % 2 == 0
+
+def is_even_save(num):
+    if not isinstance(num, int):
+        raise TypeError("Input must be an integer")
+    return num % 2 == 0
+
+def divide_with_error(a, b):
+    if b ==0:
+        raise ZeroDivisionError("Деление на ноль невозможно")
+    return a / b
+
+def safe_divide(a, b):
+    if b == 0:
+        raise ZeroDivisionError("Деление на 0 невозможно")
+    if a < 0 or b < 0:
+        raise ValueError("Числа должны быть положительными")
+    return a / b
