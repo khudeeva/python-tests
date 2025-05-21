@@ -250,9 +250,20 @@ def divide_with_error(a, b):
         raise ZeroDivisionError("Деление на ноль невозможно")
     return a / b
 
-def safe_divide(a, b):
+def safe_divide_with_raise(a, b):
     if b == 0:
         raise ZeroDivisionError("Деление на 0 невозможно")
     if a < 0 or b < 0:
         raise ValueError("Числа должны быть положительными")
     return a / b
+
+def is_prime_example(n):
+    if n <=1:
+        return False
+    for i in range(2, int(n **0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+def number_is_even(n):
+    return n % 2 == 0

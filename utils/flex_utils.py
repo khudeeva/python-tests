@@ -168,3 +168,16 @@ def describe_person_ksenia(name, *hobbies, **info):
     age = info.get("age", "не указано")
     city = info.get("city", "не указано")
     return f"Имя: {name}. Возраст: {age}. Город: {city}. Хобби: {hobbie}"
+
+def sum_args(*args):
+    return sum(args)
+
+def print_user_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key} : {value}")
+
+def report(user_id, *tags, **details):
+    tag = ",".join(tags) if tags else "не указано"
+    name = details.get("name", "не указано")
+    age = details.get("age", "не указано")
+    return f"ID: {user_id}. Теги: {tag}. name: {name}. age: {age}"

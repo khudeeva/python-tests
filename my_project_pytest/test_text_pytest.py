@@ -1,4 +1,4 @@
-from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax,count_vowels_practice, reverse_text_practice, normalize_text_practice,count_words_practice, is_title_case, count_unique_words_practice, contains_only_letters_practice, count_uppercase, user_data_fixture, qa_skills, project_info, check_user_role, validate_age,get_items_out_of_range, convert_to_int, add_numbers, divide_numbers, check_temperature, capitalize_words, is_name_valid)
+from text_pytest import (reverse_string, count_vowels,capitalize_first, is_alpha_only, is_upper, remove_spaces, remove_digits, extract_letters, is_palindrome, is_palindrome_sentence, capitalize_word, count_letter_frequency, filter_advanced, filtered_by_length, filtered_by_length_and_start, invert_words, analyze_string, analyze_case, describe_string, classify_word, classify_rich_word, analyze_text, letter_frequency, word_frequency, repeat_text, has_upper, all_capitalized, describe_words, book_data, user_info, words_list, people_data, products_list, users_list, movies_list, film_list, users_active, books_list, get_price, get_author, get_rating, get_pages, get_age, books_list_by_pages, get_pages_of_book, get_discounted_price, get_age_person, validate_password, calculate_shipping, calculate_tax,count_vowels_practice, reverse_text_practice, normalize_text_practice,count_words_practice, is_title_case, count_unique_words_practice, contains_only_letters_practice, count_uppercase, user_data_fixture, qa_skills, project_info, check_user_role, validate_age,get_items_out_of_range, convert_to_int, add_numbers, divide_numbers, check_temperature, capitalize_words, is_name_valid, checked_len_word, starts_with_capital)
 import pytest
 # переворачиваем строку
 def test_reverse_string():
@@ -683,3 +683,29 @@ def max_name_length():
 ]) 
 def test_is_name_valid(name, expected,  max_name_length):
     assert is_name_valid(name, max_name_length) == expected
+
+@pytest.fixture
+def word_list():
+    return ["мороз", "солнце", "день", "чудесный"]
+@pytest.mark.parametrize("word, expected_length", [
+    ("мороз", 5),
+    ("солнце", 6),
+    ("день", 4),
+    ("чудесный", 8)
+])
+def test_checked_len_words(word_list, word, expected_length):
+    assert word in word_list
+    assert checked_len_word(word) == expected_length
+
+@pytest.fixture
+def list_with_words():
+    return ["Москва", "река", "Солнце", "яблоко"]
+@pytest.mark.parametrize("word, expected", [
+    ("Москва", True),
+    ("река", False),
+    ("Солнце", True),
+    ("яблоко", False)
+])
+def test_starts_with_capital(list_with_words, word, expected):
+    assert word in list_with_words
+    assert starts_with_capital(word) == expected

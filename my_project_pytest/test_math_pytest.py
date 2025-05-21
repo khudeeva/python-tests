@@ -1,4 +1,4 @@
-from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise, double, is_even_example, is_even_save, divide_with_error, safe_divide)
+from math_pytest import (is_even, is_prime, filter_even, sum_even, square_all, is_divisible_by_5, remainder, is_multiple_of, is_between, is_even_and_gt_10, safe_divide, check_even_or_odd, round_if_not_integer, check_even_odd_pair, even_or_odd, temperature_status, grade_category, password_strength, number_list, word_list, users, user_settings, number_data, numbers, is_even_practice,is_divisible_practice, get_max, sum_list, average_practice,multiply_list_practice, find_min_max, divide, square, add, compare_number, divide_with_raise, safe_int, safe_divide_zero, parse_int_list, divide_raise, double, is_even_example, is_even_save, divide_with_error, safe_divide_with_raise, is_prime_example, number_is_even)
 import pytest
 def test_even_number():
     assert is_even(4) == True
@@ -415,14 +415,29 @@ def test_divide_with_error(a, b, expected, expect_error):
     (-2, 2, None, "value"),
     (6, 3, 2.0, None)
 ])
-def test_safe_divide(a, b, expected, error_type):
+def test_safe_divide_with_raise(a, b, expected, error_type):
     if error_type == "zero":
         with pytest.raises(ZeroDivisionError) as exc:
-            safe_divide(a, b)
+            safe_divide_with_raise(a, b)
         assert "на 0" in str(exc.value)
     elif error_type == "value":
         with pytest.raises(ValueError) as exc:
-            safe_divide(a, b)
+            safe_divide_with_raise(a, b)
         assert "положительными" in str(exc.value)
     else:
-        assert safe_divide(a, b) == expected
+        assert safe_divide_with_raise(a, b) == expected
+
+def test_is_prime_example():
+    assert is_prime_example(7) == True
+    assert is_prime_example(2) == True
+    assert is_prime_example(4) == False
+
+@pytest.mark.parametrize("n, expected",[
+      (2, True),
+      (4, True),
+      (5, False),
+      (7, False),
+      (8, True)                   
+])
+def test_number_is_even(n, expected):
+    assert number_is_even(n) == expected

@@ -520,3 +520,9 @@ print(capitalize_words("python is fun"))
     
 def is_name_valid(name, max_length):
     return len(name) <= max_length
+
+def checked_len_word(word):
+    return len(word)
+
+def starts_with_capital(word):
+    return word[0].isupper()
