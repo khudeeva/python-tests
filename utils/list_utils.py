@@ -129,3 +129,12 @@ def remove_duplicates(lst):
 # удаление из списка элементов, которые встречаются больше 1 раза
 def remove_repeated(lst):
     return [ item for item in lst if lst.count(item) == 1]
+
+print("\n get_even_numbers")
+def get_even_numbers(lst):
+    only_even_list = []
+    for x in lst:
+        if x % 2 == 0:
+            only_even_list.append(x)
+    return  only_even_list      
+

@@ -709,3 +709,7 @@ for key, value in age_users.items():
         print(f"{key}: {value} лет (младше 26)")
     else:
         print(f"{key} : {value} лет")
+
+print("\n get_unique_words")
+get_unique_words = ["яблоко", "банан", "яблоко", "слива"]
+print(set(get_unique_words))

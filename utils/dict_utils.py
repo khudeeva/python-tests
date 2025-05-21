@@ -282,3 +282,10 @@ def has_tasks(name):
     "anna": 2
 }
     return users.get(name, 0) > 0
+
+def filter_adults(people_and_age):
+    adults= {}
+    for name, age in people_and_age.items():
+        if age >= 18:
+            adults[name] = age
+    return adults

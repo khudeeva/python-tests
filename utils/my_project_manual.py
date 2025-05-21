@@ -27,7 +27,7 @@ from list_utils import (
     difficult_filtered_words, average_num, more_that_5,
     transform_m_words, capitalize_long_words, remove_even_length,
     word_lengths, filter_by_allowed_lengths, filter_by_lengths_and_start,
-    remove_duplicates, remove_repeated, filter_unique
+    remove_duplicates, remove_repeated, filter_unique, get_even_numbers
 )
 
 # 🧩 Импортируем функции, связанные с множествами
@@ -47,7 +47,7 @@ from dict_utils import (
     find_only_class, find_repeated_names, find_repeated_roles,
     find_unique_roles, find_users_with_unique_roles,
     find_unique_vegan_dishes, find_all_keys, find_inactive_users,
-    find_unique_role_today, update_dict, dict_summary, get_skills, get_task_count, knows_python, top_user, all_skills, has_tasks
+    find_unique_role_today, update_dict, dict_summary, get_skills, get_task_count, knows_python, top_user, all_skills, has_tasks, filter_adults
 )
 
 # ✨ Импортируем функции с *args, **kwargs, фильтрацией по типам
@@ -713,3 +713,10 @@ print(print_user_info(name="Anna", age = 28, city = "Kazan"))
 
 print("\n report")
 print(report(42, "admin", "active", name="Anna", age=28))
+
+print("\n get_even_numbers")
+print(get_even_numbers([1, 2, 3, 4, 5, 6]))
+
+people_and_age = {"Анна": 22, "Петя": 17, "Света": 35, "Женя": 15}
+print("\n filter_adults")
+print(filter_adults(people_and_age))
